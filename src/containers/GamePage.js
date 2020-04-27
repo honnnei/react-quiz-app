@@ -23,7 +23,7 @@ class GamePage extends React.Component {
     addUserNames = (num) => {
         let html = []
         for(let i=0; i<num; i++) {
-            html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
+            html.push(<label>{`Player ${i+1}`}<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/></label>)
         }
         
         return html
@@ -64,6 +64,7 @@ class GamePage extends React.Component {
             <div className='GamePage'>
                 <h1>Game Page</h1>
                 <form>
+                <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                 {this.addUserNames(this.state.playersNumber)}
                 <input type="submit" onClick="" />
                 </form>
