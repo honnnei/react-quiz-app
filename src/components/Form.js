@@ -1,31 +1,50 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class Form extends Component {
     constructor(){
         super()
         this.state={
-            players: 1,
-            userNames: {
-                1:"",
-                2:"",
-                3:"",
-                4:""
-            },
-            category: "",
-            difficulty: ""
+
+                users: [
+                    {
+                    name: null,
+                    score: null,
+                    },
+                    {
+                    name: null,
+                    score: null,
+                    },
+                    {
+                    name: null,
+                    score: null,
+                    },
+                    {
+                    name: null,
+                    score: null,
+                    }
+                ],
+                
+                forms: {
+                    difficulty:
+                    players:
+                    category:	
+                },
+                
+                data: null,	
+            
         }
-        this.updateState = this.updateState.bind(this)
-        this.addUserNames = this.addUserNames.bind(this)
-        this.updateUsers = this.updateUsers.bind(this)
+        // this.updateState =this.updateState.bind(this)
+
     }
 
-    updateState(e){
+    updateState = (e) => {
         e.preventDefault();
         const obj = e.target.name
+
         this.setState({[obj]: e.target.value})
     }
 
-    addUserNames(num){
+    addUserNames = (num) => {
         let html = []
         for(let i=0; i<num; i++) {
             html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
@@ -33,13 +52,14 @@ class Form extends Component {
         return html
     }
 
-    updateUsers(e){
+    updateUsers = (e) => {
         e.preventDefault();
         const obj = e.target.name
         const name = e.target.value
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
     }
 
+  
     render() {
         console.log(this.state)
         return (
@@ -103,7 +123,7 @@ class Form extends Component {
                                 <option value="hard">Hard</option>
                         </select>
                     </label>
-                    <input type="button" onClick="" value="Submit"/>
+                    <Link to='/gamepage'><input type="button" onClick="" value="Submit"/></Link>
                 </form>
             </div>
         );
