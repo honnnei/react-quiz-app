@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
 
-function HomePage() {
-    return(
-        <div>
-            <h1>Home Page</h1>
-        </div>
-    );
+import React, { Component } from 'react';
+import Form from '../components/Form'
+
+class HomePage extends Component {
+
+
+    render() {
+        return (
+            <div>
+                <Form/>
+            </div>
+        );
+    }
 }
 
 export default HomePage;

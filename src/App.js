@@ -1,21 +1,26 @@
 import React from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
+import NavigationBar from './components/Navbar';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
-import NewGamePage from './containers/NewGamePage';
+import GamePage from './containers/GamePage';
 import PastScoresPage from './containers/PastScoresPage';
-import ScorePage from './containers/ScorePage';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NavigationBar />
       <Router>
         <Switch>
           <Route path='/' exact><HomePage /></Route>
-          <Route path='/newgame' exact><NewGamePage /></Route>
+          {/* <Route path='/gamepage/:playersNumber/:difficulty/:category' exact><GamePage /></Route> */}
+          <Route 
+              path='/gamepage/:playersNumber/:difficulty/:category' 
+              
+              render={(props) => <GamePage {...props} />} 
+          />
           <Route path='/pastscores' exact><PastScoresPage /></Route>
+          {/* playersNumber1={:} difficulty1={this.props.match.params.difficulty} category1={this.props.match.params.category} */}
+
 
         </Switch>
     </Router>
