@@ -4,6 +4,7 @@ class Form extends Component {
     constructor(){
         super()
         this.state={
+
                 users: [
                     {
                     name: null,
@@ -33,15 +34,34 @@ class Form extends Component {
             
         }
         // this.updateState =this.updateState.bind(this)
+
     }
 
     updateState = (e) => {
         e.preventDefault();
         const obj = e.target.name
-        this.setState( {[obj]: e.target.value})
-    }    
 
+        this.setState({[obj]: e.target.value})
+    }
+
+    addUserNames = (num) => {
+        let html = []
+        for(let i=0; i<num; i++) {
+            html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
+        }
+        return html
+    }
+
+    updateUsers = (e) => {
+        e.preventDefault();
+        const obj = e.target.name
+        const name = e.target.value
+        this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
+    }
+
+  
     render() {
+        console.log(this.state)
         return (
             <div>
                 <form>
@@ -57,6 +77,7 @@ class Form extends Component {
                                 <option value="4">4</option>
                         </select>
                     </label>
+                    {this.addUserNames(this.state.players)}
                     <label>
                         Choose a category:
                         <select 

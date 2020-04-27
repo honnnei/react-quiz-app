@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import NavigationBar from './components/Navbar';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import NewGamePage from './containers/NewGamePage';
@@ -8,7 +8,7 @@ import PastScoresPage from './containers/PastScoresPage';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NavigationBar />
       <Router>
         <Switch>
           <Route path='/' exact><HomePage /></Route>
