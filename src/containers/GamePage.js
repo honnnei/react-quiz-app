@@ -61,7 +61,7 @@ class GamePage extends React.Component {
        
         console.log(this.state);
         return(
-            <div>
+            <div className='GamePage'>
                 <h1>Game Page</h1>
                 <form>
                 {this.addUserNames(this.state.playersNumber)}
