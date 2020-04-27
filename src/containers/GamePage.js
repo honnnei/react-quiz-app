@@ -7,10 +7,35 @@ class GamePage extends React.Component {
         this.state={
             playersNumber: null,
             difficulty: null,
-            category: null
+            category: null,
+            userNames: {
+                1: "",
+                2: "",
+                3: "",
+                4: ""
+            }
             
         }
     }
+    
+
+
+    addUserNames = (num) => {
+        let html = []
+        for(let i=0; i<num; i++) {
+            html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
+        }
+        
+        return html
+    }
+
+    updateUsers = (e) => {
+        e.preventDefault();
+        const obj = e.target.name
+        const name = e.target.value
+        this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
+    }
+
 
     componentDidMount() {
         let number;
@@ -32,12 +57,16 @@ class GamePage extends React.Component {
 
 
     render()  {
-   
+       
        
         console.log(this.state);
         return(
             <div>
                 <h1>Game Page</h1>
+                <form>
+                {this.addUserNames(this.state.playersNumber)}
+                <input type="submit" onClick="" />
+                </form>
             </div>
         );
     }

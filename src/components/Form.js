@@ -48,21 +48,21 @@ class Form extends Component {
         // this.setState({[obj]: e.target.value})
     }
 
-    addUserNames = (num) => {
-        let html = []
-        for(let i=0; i<num; i++) {
-            html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
-        }
+    // addUserNames = (num) => {
+    //     let html = []
+    //     for(let i=0; i<num; i++) {
+    //         html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
+    //     }
         
-        return html
-    }
+    //     return html
+    // }
 
-    updateUsers = (e) => {
-        e.preventDefault();
-        const obj = e.target.name
-        const name = e.target.value
-        this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
-    }
+    // updateUsers = (e) => {
+    //     e.preventDefault();
+    //     const obj = e.target.name
+    //     const name = e.target.value
+    //     this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
+    // }
 
   
     render() {
@@ -82,7 +82,6 @@ class Form extends Component {
                                 <option value="4">4</option>
                         </select>
                     </label>
-                    {this.addUserNames(this.state.forms.playersNumber)}
                     <label>
                         Choose a category:
                         <select 
