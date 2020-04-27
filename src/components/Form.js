@@ -1,23 +1,72 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class Form extends Component {
     constructor(){
         super()
         this.state={
-            players: 1,
-            category: "",
-            difficulty: ""
+
+                userNames: {
+                    1: "",
+                    2: "",
+                    3: "",
+                    4: ""
+                },
+                forms: {
+                    difficulty: "",
+                    playersNumber: 1,
+                    category: ""
+                },
+                data: null,	
+            
         }
-        this.updateState =this.updateState.bind(this)
+        // this.updateState =this.updateState.bind(this)
+
     }
 
-    updateState(e){
+    // {
+    //     name: null,
+    //     score: null,
+    //     },
+    //     {
+    //     name: null,
+    //     score: null,
+    //     },
+    //     {
+    //     name: null,
+    //     score: null,
+    //     },
+    //     {
+    //     name: null,
+    //     score: null,
+    //     }
+
+    updateState = (e) => {
         e.preventDefault();
         const obj = e.target.name
-        this.setState( {[obj]: e.target.value})
+        const name = e.target.value
+        this.setState({ forms: { ...this.state.forms, [obj]: name}})
+        // this.setState({[obj]: e.target.value})
     }
 
+    addUserNames = (num) => {
+        let html = []
+        for(let i=0; i<num; i++) {
+            html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
+        }
+        
+        return html
+    }
+
+    updateUsers = (e) => {
+        e.preventDefault();
+        const obj = e.target.name
+        const name = e.target.value
+        this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
+    }
+
+  
     render() {
+        console.log(this.state);
         return (
             <div>
                 <form>
@@ -25,14 +74,15 @@ class Form extends Component {
                         How many players:
                         <select 
                             onChange={this.updateState} 
-                            value={this.state.players} 
-                            name="players">
+                            value={this.state.forms.playersNumber} 
+                            name="playersNumber">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                         </select>
                     </label>
+                    {this.addUserNames(this.state.forms.playersNumber)}
                     <label>
                         Choose a category:
                         <select 
@@ -78,7 +128,10 @@ class Form extends Component {
                                 <option value="hard">Hard</option>
                         </select>
                     </label>
-                    <input type="button" onClick="" value="Submit"/>
+                    <Link to={`/gamepage/${this.state.forms.playersNumber}/${this.state.forms.difficulty}/${this.state.forms.category}`}>
+                    <button onClick="">Submit and Start the Game</button>
+                    </Link>
+                    
                 </form>
             </div>
         );
