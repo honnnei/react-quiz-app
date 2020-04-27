@@ -14,6 +14,10 @@ describe('App', () => {
     expect(wrapper.containsMatchingElement(<Navbar />)).toEqual(true);
   });
 
+  test('contains Routes', () => {
+    expect(wrapper.containsMatchingElement(<Route />)).toEqual(true);
+  });
+
   // test("render a button with text of 'increment'", () => {
   //   expect(wrapper.find('#increment-btn').text()).toBe('Increment Me!');
   // });
