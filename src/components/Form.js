@@ -12,9 +12,9 @@ class Form extends Component {
                     4: ""
                 },
                 forms: {
-                    difficulty: "",
+                    difficulty: "easy",
                     playersNumber: 1,
-                    category: ""
+                    category: "9"
                 },
                 data: null,	
             
