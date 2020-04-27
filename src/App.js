@@ -1,10 +1,9 @@
-
+import React from 'react';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import NewGamePage from './containers/NewGamePage';
 import PastScoresPage from './containers/PastScoresPage';
-import ScorePage from './containers/ScorePage';
 
 function App() {
   return (
