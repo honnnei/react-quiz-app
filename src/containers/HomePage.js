@@ -1,12 +1,13 @@
+
 import React, { Component } from 'react';
 import Form from '../components/Form'
-import Navbar from '../components/Navbar'
+import NavigationBar from '../components/Navbar'
 
 class HomePage extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
+                <NavigationBar/>
                 <Form/>
             </div>
         );
