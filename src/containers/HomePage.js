@@ -4,6 +4,8 @@ import Form from '../components/Form'
 import NavigationBar from '../components/Navbar'
 
 class HomePage extends Component {
+
+
     render() {
         return (
             <div>
