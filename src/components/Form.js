@@ -5,31 +5,17 @@ class Form extends Component {
         super()
         this.state={
 
-                users: [
-                    {
-                    name: null,
-                    score: null,
-                    },
-                    {
-                    name: null,
-                    score: null,
-                    },
-                    {
-                    name: null,
-                    score: null,
-                    },
-                    {
-                    name: null,
-                    score: null,
-                    }
-                ],
-                
-                forms: {
-                    difficulty:
-                    players:
-                    category:	
+                userNames: {
+                    1: "",
+                    2: "",
+                    3: "",
+                    4: ""
                 },
-                
+                forms: {
+                    difficulty: "",
+                    playersNumber: 1,
+                    category: ""
+                },
                 data: null,	
             
         }
@@ -37,11 +23,29 @@ class Form extends Component {
 
     }
 
+    // {
+    //     name: null,
+    //     score: null,
+    //     },
+    //     {
+    //     name: null,
+    //     score: null,
+    //     },
+    //     {
+    //     name: null,
+    //     score: null,
+    //     },
+    //     {
+    //     name: null,
+    //     score: null,
+    //     }
+
     updateState = (e) => {
         e.preventDefault();
         const obj = e.target.name
-
-        this.setState({[obj]: e.target.value})
+        const name = e.target.value
+        this.setState({ forms: { ...this.state.forms, [obj]: name}})
+        // this.setState({[obj]: e.target.value})
     }
 
     addUserNames = (num) => {
@@ -49,6 +53,7 @@ class Form extends Component {
         for(let i=0; i<num; i++) {
             html.push(<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/>)
         }
+        
         return html
     }
 
@@ -61,7 +66,7 @@ class Form extends Component {
 
   
     render() {
-        console.log(this.state)
+        console.log(this.state);
         return (
             <div>
                 <form>
@@ -69,15 +74,15 @@ class Form extends Component {
                         How many players:
                         <select 
                             onChange={this.updateState} 
-                            value={this.state.players} 
-                            name="players">
+                            value={this.state.forms.playersNumber} 
+                            name="playersNumber">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                         </select>
                     </label>
-                    {this.addUserNames(this.state.players)}
+                    {this.addUserNames(this.state.forms.playersNumber)}
                     <label>
                         Choose a category:
                         <select 
@@ -123,7 +128,10 @@ class Form extends Component {
                                 <option value="hard">Hard</option>
                         </select>
                     </label>
-                    <Link to='/gamepage'><input type="button" onClick="" value="Submit"/></Link>
+                    <Link to={`/gamepage/${this.state.forms.playersNumber}/${this.state.forms.difficulty}/${this.state.forms.category}`}>
+                    <button onClick="">Submit and Start the Game</button>
+                    </Link>
+                    
                 </form>
             </div>
         );
