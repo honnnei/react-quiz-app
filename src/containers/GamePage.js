@@ -1,6 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
-import {Button} from 'reactstrap';
 import Question from '../components/Question'
 
 class GamePage extends React.Component {
@@ -14,11 +12,8 @@ class GamePage extends React.Component {
             userNames: {
                 
             },
-            userScore: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0
+            userScores: {
+
             },
             totalScore: 0
         }
@@ -36,10 +31,10 @@ class GamePage extends React.Component {
     }
 
     updateUsers = (e) => {
-        // e.preventDefault();
         const obj = e.target.name
         const name = e.target.value
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
+        this.setState({ userScores: { ...this.state.userScores, [name]: 0}})
     }
 
 
@@ -60,28 +55,30 @@ class GamePage extends React.Component {
             console.log('error in getQuestions, category does not exist')
         }
         const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
-        console.log(url);
         const response = await fetch(url);
         const data = await response.json();
         this.setState({questionsArray: data.results});
-        console.log(data);
         
 
     }
 
-    totalScore = () => {
-        this.setState({totalScore : this.state.totalScore + 1})
+    totalScore = (n, user) => {
+        this.setState({userScores : {...this.state.userScores, [user]: this.state.userScores[user] + n}})
     }
 
     render()  {
-        console.log(this.state.questionsArray);
-        console.log(this.state.userNames);
         return(
             <div className='GamePage'>
                 <h1>Game Page</h1>
                 <h2>Total Score: {this.state.totalScore} </h2>
+                <div>
+                    <h2>Scores:</h2>
+                    {(Object.values(this.state.userNames)).map(user => {
+                        return (<h3>{user}:{this.state.userScores[user]}</h3>)
+                    })}
+                </div>
                 <form>
-                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore}/>)}
+                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
                 </form>
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
