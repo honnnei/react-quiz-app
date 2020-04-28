@@ -1,6 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
-import {Button} from 'reactstrap';
 import Question from '../components/Question'
 
 class GamePage extends React.Component {
@@ -57,23 +55,18 @@ class GamePage extends React.Component {
             console.log('error in getQuestions, category does not exist')
         }
         const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
-        console.log(url);
         const response = await fetch(url);
         const data = await response.json();
         this.setState({questionsArray: data.results});
-        console.log(data);
         
 
     }
 
     totalScore = (n, user) => {
-        console.log(user);
         this.setState({userScores : {...this.state.userScores, [user]: this.state.userScores[user] + n}})
     }
 
     render()  {
-        console.log(this.state.questionsArray);
-        console.log(this.state.userNames);
         return(
             <div className='GamePage'>
                 <h1>Game Page</h1>

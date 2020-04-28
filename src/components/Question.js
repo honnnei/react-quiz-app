@@ -18,14 +18,13 @@ class Question extends React.Component {
     handleChange = (event) => {
         const {value} = event.target;
         const user = event.target.id;
-        if((value === atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] == 0)) { 
+        if((value === atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] === 0)) { 
             this.props.totalScore(1, user);
             this.setState( { userScores: { ...this.state.userScores, [user]: 1}} )
-        }else if((value !== atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] == 1)){
+        }else if((value !== atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] === 1)){
             this.props.totalScore(-1, user);
             this.setState( { userScores: { ...this.state.userScores, [user]: 0}} )
         };
-        console.log(this.state.userScores)
     }
 
     componentDidMount(){
@@ -42,7 +41,7 @@ class Question extends React.Component {
     }
 
     shuffleArray = () => {
-        let answers = new Array;
+        let answers = [];
         answers.push(atob(this.props.questionContent.correct_answer));
         this.props.questionContent.incorrect_answers.forEach((answer) => answers.push(atob(answer)));
         answers.sort(() => Math.random() -0.5);
@@ -53,38 +52,37 @@ class Question extends React.Component {
 
 
     render(){
-        console.log(this.state);
 
-    return(
+        return(
 
-        <div className="Question">
-            <h2>Question {this.props.id + 1}</h2>
-            <h3>{atob(this.props.questionContent.question)}</h3>
-            {this.state.userNames.map(user => {
-                return(
-                <form>
-                <h4>{user}</h4>
-                {this.state.answerArray.map(answer => {
+            <div className="Question">
+                <h2>Question {this.props.id + 1}</h2>
+                <h3>{atob(this.props.questionContent.question)}</h3>
+                {this.state.userNames.map(user => {
                     return(
-                        <div>
-                                <input 
-                                    type="radio" 
-                                    id={user} 
-                                    name={`answer_${this.props.id}`} 
-                                    value={answer}
-                                    onChange={this.handleChange}
-                                    />
-                                <label for={answer}> {answer} </label>
-                            
-                        </div>
-                    )
-                })}
-                </form>
-            )})}
+                    <form>
+                    <h4>{user}</h4>
+                    {this.state.answerArray.map(answer => {
+                        return(
+                            <div>
+                                    <input 
+                                        type="radio" 
+                                        id={user} 
+                                        name={`answer_${this.props.id}`} 
+                                        value={answer}
+                                        onChange={this.handleChange}
+                                        />
+                                    <label for={answer}> {answer} </label>
+                                
+                            </div>
+                        )
+                    })}
+                    </form>
+                )})}
 
-        </div>
+            </div>
 
-    )   
+        )   
     }
 }
 export default Question;
