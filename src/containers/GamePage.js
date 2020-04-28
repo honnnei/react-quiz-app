@@ -12,11 +12,15 @@ class GamePage extends React.Component {
             category: null,
             questionsArray: [],
             userNames: {
-                1: "",
-                2: "",
-                3: "",
-                4: ""
-            }
+                
+            },
+            userScore: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0
+            },
+            totalScore: 0
         }
     }
     
@@ -40,20 +44,13 @@ class GamePage extends React.Component {
 
 
     componentDidMount() {
-        let number;
-        let dif;
-        let cat;
-       
-            number = this.props.match.params.playersNumber;
-            dif = this.props.match.params.difficulty;
-            cat = this.props.match.params.category;
+
             this.setState({
-                playersNumber: number,
-                difficulty: dif, 
-                category: cat
+                playersNumber: this.props.match.params.playersNumber,
+                difficulty: this.props.match.params.difficulty, 
+                category: this.props.match.params.category
             });
        
-        console.log(number);
        //call api within componenetDidMount();
     }
 
@@ -72,18 +69,24 @@ class GamePage extends React.Component {
 
     }
 
+    totalScore = () => {
+        this.setState({totalScore : this.state.totalScore + 1})
+    }
 
     render()  {
         console.log(this.state.questionsArray);
+        console.log(this.state.userNames);
         return(
             <div className='GamePage'>
                 <h1>Game Page</h1>
-                <Button onClick={this.getQuestions}> Start Game </Button>
-                {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i}/>)}
+                <h2>Total Score: {this.state.totalScore} </h2>
                 <form>
-                <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
-                {this.addUserNames(this.state.playersNumber)}
-                <input type="submit" onClick="" />
+                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore}/>)}
+                </form>
+                <form className="name-form">
+                    <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
+                    {this.addUserNames(this.state.playersNumber)}
+                    <input type="submit" onClick={this.getQuestions} value="Start Game" />
                 </form>
             </div>
         );
