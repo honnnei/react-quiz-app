@@ -51,8 +51,8 @@ class Question extends React.Component {
         console.log(this.state);
 
     return(
-        
-        <div>
+
+        <div className="Question">
             <h2>Question {this.props.id + 1}</h2>
             <h3>{atob(this.props.questionContent.question)}</h3>
 

@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
-import { shallow, mount } from 'enzyme';
-import GamePage from '../containers/GamePage';
-jest.mock('./__mock__/Request');
-import Request from './__mock__/Request';
-import ApiObject from './__mock__/__mockData__.json';
+
+import { shallow, mount } from 'enzyme'
+import GamePage from '../containers/GamePage'
+
+
 
 describe('GamePage', () => {
 
-    // let wrapper;
-    // beforeEach(() => {
-     
-    // });
 
-    it('GamePage should render GamePage div', () => {
+describe('<GamePage />', () => {
+
+    it('should render GamePage div', () => {
+
+
         const wrapper = shallow(<GamePage  required={true}
     match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
         expect(wrapper.exists('.GamePage')).toEqual(true);
@@ -33,7 +33,49 @@ describe('GamePage', () => {
           expect(Request).toEqual(ApiObject);
     });
 
+    it('should have a start game button', () => {
+        const wrapper = shallow(<GamePage  required={true}
+    match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
+        expect(wrapper.exists('Button')).toEqual(true);
+    } )
+
+
+    it('should call the Api on button clicks', () => {
+        const wrapper = mount(<GamePage  required={true}
+    match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
+    expect(wrapper.find('Question').length).toEqual(0)    
+        wrapper.find('Button').simulate('click');
+        setTimeout(() => {
+            expect(wrapper.find('Question').length).toEqual(10);
+          }, 4000)      
+    } )
+
+    it('should render a input tag', () => {
+        const wrapper = mount(<GamePage  required={true}
+    match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
+    expect(wrapper.find('input').length).toEqual(1)          
+    } )
+
+    it('should render change state onChange', () => {
+        const wrapper = shallow(<GamePage  required={true}  match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
+    wrapper.find('input').simulate('change', { target: { name: '1', value: '02' } })
+    setTimeout(() => {
+        expect((wrapper.state('userNames.1'))).toEqual('02');
+      }, 4000)      
+
+    })
 
 
 
-  })
+
+    })
+
+
+
+
+
+  
+
+
+
+ 
