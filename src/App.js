@@ -5,7 +5,7 @@ import HomePage from './containers/HomePage';
 import GamePage from './containers/GamePage';
 import PastScoresPage from './containers/PastScoresPage';
 import Question1 from './components/Question1'
-import Question2 from './components/Questions2'
+import NextQuestion from './components/NextQuestion'
 
 function App() {
   return (
@@ -21,9 +21,11 @@ function App() {
               render={(props) => <GamePage {...props} />} 
           />
           <Route path='/pastscores' exact component={PastScoresPage}/>
-          <Route path='/question1'  component={Question1}/>
-          <Route path='/question2'  component={Question2}/>
-          {/* playersNumber1={:} difficulty1={this.props.match.params.difficulty} category1={this.props.match.params.category} */}
+          <Route path='/question/:qNumber' exact render={(props) => <Question1 {...props} />}
+          />
+          <Route path='/nextquestion/:previousQuestionNum' exact render={(props) => <NextQuestion {...props} />}
+          />
+         
 
 
         </Switch>

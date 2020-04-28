@@ -65,8 +65,6 @@ class GamePage extends React.Component {
         const data = await response.json();
         this.setState({questionsArray: data.results});
         console.log(data.results[0]);
-        
-
     }
 
     totalScore = () => {
@@ -87,7 +85,7 @@ class GamePage extends React.Component {
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
                     <button onClick={this.getQuestions}>get questions</button>
-                   <Link to={{pathname:'/question1', state: {questionContent: this.state.questionsArray, players: this.state.userNames }}}   ><input type="submit"  value="Start Game" /></Link>
+                   <Link to={{pathname:'/question/0', state: {questionState: this.state}}}   ><input type="submit"  value="Start Game" /></Link>
                    {/* onClick={this.getQuestions} */}
                 </form>
             </div>
