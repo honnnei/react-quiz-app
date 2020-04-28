@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from '../App';
 import Navbar from '../components/Navbar';
+import { Route } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
 
 describe('App', () => {
