@@ -10,7 +10,7 @@ class GamePage extends React.Component {
             playersNumber: null,
             difficulty: null,
             category: null,
-            questionsArray: []
+            questionsArray: [],
             userNames: {
                 1: "",
                 2: "",
