@@ -14,11 +14,8 @@ class GamePage extends React.Component {
             userNames: {
                 
             },
-            userScore: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0
+            userScores: {
+
             },
             totalScore: 0
         }
@@ -40,6 +37,7 @@ class GamePage extends React.Component {
         const obj = e.target.name
         const name = e.target.value
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
+        this.setState({ userScores: { ...this.state.userScores, [name]: 0}})
     }
 
 
@@ -69,8 +67,8 @@ class GamePage extends React.Component {
 
     }
 
-    totalScore = () => {
-        this.setState({totalScore : this.state.totalScore + 1})
+    totalScore = (n) => {
+        this.setState({totalScore : this.state.totalScore + n})
     }
 
     render()  {
@@ -81,7 +79,7 @@ class GamePage extends React.Component {
                 <h1>Game Page</h1>
                 <h2>Total Score: {this.state.totalScore} </h2>
                 <form>
-                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore}/>)}
+                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
                 </form>
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>

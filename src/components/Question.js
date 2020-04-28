@@ -1,19 +1,13 @@
 import React from 'react';
 
 class Question extends React.Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
-            playersNumber: null,
-            difficulty: null,
-            category: null,
+            userNames: this.props.userNames,
+            playersNumber: this.props.playersNumber,
             questionsArray: [],
             score: 0,
-            answerCheck: '',
-            answer_0: '',
-            answer_1: '',
-            answer_2: '',
-            answer_3: '',
             answerArray: []
         }
     };
@@ -25,10 +19,11 @@ class Question extends React.Component {
         console.log(this.state.score);
 
 
-        if(value === atob(this.props.questionContent.correct_answer)) { 
-            this.props.totalScore();
-            // this.setState( { score: 1 } )
-        } else {
+        if((value === atob(this.props.questionContent.correct_answer)) && (this.state.score == 0)) { 
+            this.props.totalScore(1);
+            this.setState( { score: 1 } )
+        }else if((value !== atob(this.props.questionContent.correct_answer)) && (this.state.score == 1)){
+            this.props.totalScore(-1);
             this.setState( { score: 0 } )
         };
     }
