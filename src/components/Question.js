@@ -4,33 +4,35 @@ class Question extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            userNames: this.props.userNames,
+            userNames: Object.values(this.props.userNames),
             playersNumber: this.props.playersNumber,
             questionsArray: [],
             score: 0,
-            answerArray: []
+            answerArray: [],
+            userScores: {
+
+            },
         }
     };
 
     handleChange = (event) => {
         const {value} = event.target;
-        console.log(value)
-        console.log(atob(this.props.questionContent.correct_answer));
-        console.log(this.state.score);
-
-
-        if((value === atob(this.props.questionContent.correct_answer)) && (this.state.score == 0)) { 
-            this.props.totalScore(1);
-            this.setState( { score: 1 } )
-        }else if((value !== atob(this.props.questionContent.correct_answer)) && (this.state.score == 1)){
-            this.props.totalScore(-1);
-            this.setState( { score: 0 } )
+        const user = event.target.id;
+        if((value === atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] == 0)) { 
+            this.props.totalScore(1, user);
+            this.setState( { userScores: { ...this.state.userScores, [user]: 1}} )
+        }else if((value !== atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] == 1)){
+            this.props.totalScore(-1, user);
+            this.setState( { userScores: { ...this.state.userScores, [user]: 0}} )
         };
+        console.log(this.state.userScores)
     }
 
     componentDidMount(){
         this.shuffleArray();
-    }
+        this.state.userNames.map(user => {
+            this.setState({ userScores: { ...this.state.userScores, [user]: 0}})})
+    };
 
     shuffleArray = () => {
         let answers = new Array;
@@ -42,6 +44,7 @@ class Question extends React.Component {
     
     // if checked button === correct_answer, setState score + 1
 
+
     render(){
         console.log(this.state);
 
@@ -50,22 +53,27 @@ class Question extends React.Component {
         <div className="Question">
             <h2>Question {this.props.id + 1}</h2>
             <h3>{atob(this.props.questionContent.question)}</h3>
-
-            {this.state.answerArray.map(answer => (
-    
-            <div>
-                    <input 
-                        type="radio" 
-                        // id={answer} 
-                        name={`answer_${this.props.id}`} 
-                        value={answer}
-                        onChange={this.handleChange}
-                        />
-                    <label for={answer}> {answer} </label>
-                
-            </div>
-
-            ))}
+            {this.state.userNames.map(user => {
+                return(
+                <form>
+                <h4>{user}</h4>
+                {this.state.answerArray.map(answer => {
+                    return(
+                        <div>
+                                <input 
+                                    type="radio" 
+                                    id={user} 
+                                    name={`answer_${this.props.id}`} 
+                                    value={answer}
+                                    onChange={this.handleChange}
+                                    />
+                                <label for={answer}> {answer} </label>
+                            
+                        </div>
+                    )
+                })}
+                </form>
+            )})}
 
         </div>
 

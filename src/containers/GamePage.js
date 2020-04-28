@@ -67,8 +67,8 @@ class GamePage extends React.Component {
 
     }
 
-    totalScore = (n) => {
-        this.setState({totalScore : this.state.totalScore + n})
+    totalScore = (n, user) => {
+        this.setState({userScores : {...this.state.userScores, [user]: this.state.userScores[user] + n}})
     }
 
     render()  {
@@ -78,6 +78,12 @@ class GamePage extends React.Component {
             <div className='GamePage'>
                 <h1>Game Page</h1>
                 <h2>Total Score: {this.state.totalScore} </h2>
+                <div>
+                    <h2>Scores:</h2>
+                    {(Object.values(this.state.userNames)).map(user => {
+                        return (<h3>{user}:{this.state.userScores[user]}</h3>)
+                    })}
+                </div>
                 <form>
                     {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
                 </form>
