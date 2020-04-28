@@ -12,9 +12,7 @@ class GamePage extends React.Component {
             difficulty: null,
             category: null,
             questionsArray: [],
-            userNames: {
-                
-            },
+            userNames: {},
             userScore: {
                 1: 0,
                 2: 0,
@@ -88,8 +86,8 @@ class GamePage extends React.Component {
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
-                    <button onClick={this.getQuestions} >get questions</button>
-                   <Link to={{pathname:'/question', state: {questionContent: this.state.questionsArray}}}   ><input type="submit"  value="Start Game" /></Link>
+                    <button onClick={this.getQuestions}>get questions</button>
+                   <Link to={{pathname:'/question1', state: {questionContent: this.state.questionsArray, players: this.state.userNames }}}   ><input type="submit"  value="Start Game" /></Link>
                    {/* onClick={this.getQuestions} */}
                 </form>
             </div>

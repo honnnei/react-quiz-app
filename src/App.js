@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import GamePage from './containers/GamePage';
 import PastScoresPage from './containers/PastScoresPage';
-import Question2 from './components/Question2'
-import Question3 from './components/Questions3'
+import Question1 from './components/Question1'
+import Question2 from './components/Questions2'
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
               render={(props) => <GamePage {...props} />} 
           />
           <Route path='/pastscores' exact component={PastScoresPage}/>
-          <Route path='/question'  component={Question2}/>
-          <Route path='/questions'  component={Question3}/>
+          <Route path='/question1'  component={Question1}/>
+          <Route path='/question2'  component={Question2}/>
           {/* playersNumber1={:} difficulty1={this.props.match.params.difficulty} category1={this.props.match.params.category} */}
 
 
