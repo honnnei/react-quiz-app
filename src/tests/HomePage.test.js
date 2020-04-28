@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import HomePage from '../containers/HomePage'
@@ -10,6 +11,7 @@ describe('<HomePage />', () => {
         expect(wrapper.exists('Form')).toEqual(true);
     } )
 })
+
 
 
 
