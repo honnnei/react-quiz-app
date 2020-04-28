@@ -33,7 +33,6 @@ class GamePage extends React.Component {
     }
 
     updateUsers = (e) => {
-        // e.preventDefault();
         const obj = e.target.name
         const name = e.target.value
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
@@ -68,6 +67,7 @@ class GamePage extends React.Component {
     }
 
     totalScore = (n, user) => {
+        console.log(user);
         this.setState({userScores : {...this.state.userScores, [user]: this.state.userScores[user] + n}})
     }
 

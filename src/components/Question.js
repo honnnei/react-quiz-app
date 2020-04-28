@@ -30,9 +30,16 @@ class Question extends React.Component {
 
     componentDidMount(){
         this.shuffleArray();
-        this.state.userNames.map(user => {
-            this.setState({ userScores: { ...this.state.userScores, [user]: 0}})})
+        this.scores();
     };
+
+    scores = () => {
+        let obj = {};
+        for(let i=0; i< this.state.userNames.length;i++){
+            obj[this.state.userNames[i]] = 0;
+        }
+        this.setState({userScores : obj})
+    }
 
     shuffleArray = () => {
         let answers = new Array;
