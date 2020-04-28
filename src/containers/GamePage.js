@@ -32,7 +32,7 @@ class GamePage extends React.Component {
     }
 
     updateUsers = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const obj = e.target.name
         const name = e.target.value
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
@@ -83,7 +83,6 @@ class GamePage extends React.Component {
                 <form>
                 <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                 {this.addUserNames(this.state.playersNumber)}
-                <input type="submit" onClick="" />
                 </form>
             </div>
         );
