@@ -1,5 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
+import {Button} from 'reactstrap';
+import Question from '../components/Question'
 
 class GamePage extends React.Component {
     constructor(){
@@ -8,13 +10,13 @@ class GamePage extends React.Component {
             playersNumber: null,
             difficulty: null,
             category: null,
+            questionsArray: []
             userNames: {
                 1: "",
                 2: "",
                 3: "",
                 4: ""
             }
-            
         }
     }
     
@@ -52,17 +54,32 @@ class GamePage extends React.Component {
             });
        
         console.log(number);
-       
+       //call api within componenetDidMount();
+    }
+
+    getQuestions = async (e) => {
+        e.preventDefault();
+        if(!this.state.category){
+            console.log('error in getQuestions, category does not exist')
+        }
+        const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
+        console.log(url);
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({questionsArray: data.results});
+        console.log(data);
+        
+
     }
 
 
     render()  {
-       
-       
-        console.log(this.state);
+        console.log(this.state.questionsArray);
         return(
             <div className='GamePage'>
                 <h1>Game Page</h1>
+                <Button onClick={this.getQuestions}> Start Game </Button>
+                {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i}/>)}
                 <form>
                 <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                 {this.addUserNames(this.state.playersNumber)}
