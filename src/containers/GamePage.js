@@ -11,8 +11,33 @@ class GamePage extends React.Component {
             difficulty: null,
             category: null,
             questionsArray: []
+            userNames: {
+                1: "",
+                2: "",
+                3: "",
+                4: ""
+            }
         }
     }
+    
+
+
+    addUserNames = (num) => {
+        let html = []
+        for(let i=0; i<num; i++) {
+            html.push(<label>{`Player ${i+1}`}<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/></label>)
+        }
+        
+        return html
+    }
+
+    updateUsers = (e) => {
+        e.preventDefault();
+        const obj = e.target.name
+        const name = e.target.value
+        this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
+    }
+
 
     componentDidMount() {
         let number;
@@ -50,13 +75,16 @@ class GamePage extends React.Component {
 
     render()  {
         console.log(this.state.questionsArray);
-        console.log(this.state);
         return(
-            <div>
+            <div className='GamePage'>
                 <h1>Game Page</h1>
                 <Button onClick={this.getQuestions}> Start Game </Button>
                 {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i}/>)}
-
+                <form>
+                <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
+                {this.addUserNames(this.state.playersNumber)}
+                <input type="submit" onClick="" />
+                </form>
             </div>
         );
     }
