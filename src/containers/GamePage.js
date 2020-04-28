@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import {Button} from 'reactstrap';
 import Question from '../components/Question'
+import { Link } from 'react-router-dom';
 
 class GamePage extends React.Component {
     constructor(){
@@ -59,12 +60,13 @@ class GamePage extends React.Component {
         if(!this.state.category){
             console.log('error in getQuestions, category does not exist')
         }
-        const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
+        // &encode=base64
+        const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
         console.log(url);
         const response = await fetch(url);
         const data = await response.json();
         this.setState({questionsArray: data.results});
-        console.log(data);
+        console.log(data.results[0]);
         
 
     }
@@ -80,14 +82,15 @@ class GamePage extends React.Component {
             <div className='GamePage'>
                 <h1>Game Page</h1>
                 <h2>Total Score: {this.state.totalScore} </h2>
-                <form>
+                {/* <form>
                     {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore}/>)}
-                </form>
+                </form> */}
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
-                    <input type="submit" onClick={this.getQuestions} value="Start Game" />
-
+                    <button onClick={this.getQuestions} >get questions</button>
+                   <Link to={{pathname:'/question', state: {questionContent: this.state.questionsArray}}}   ><input type="submit"  value="Start Game" /></Link>
+                   {/* onClick={this.getQuestions} */}
                 </form>
             </div>
         );
