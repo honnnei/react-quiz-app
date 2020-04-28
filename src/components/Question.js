@@ -61,7 +61,7 @@ class Question extends React.Component {
                 {this.state.userNames.map(user => {
                     return(
                     <form>
-                    <h4>{user}</h4>
+                    <h4>{this.state.playersNumber > 1? user:""}</h4>
                     {this.state.answerArray.map(answer => {
                         return(
                             <div>
