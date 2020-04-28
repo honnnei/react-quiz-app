@@ -97,7 +97,7 @@ class Form extends Component {
                         </select>
                     </label>
                     <Link to={`/gamepage/${this.state.forms.playersNumber}/${this.state.forms.difficulty}/${this.state.forms.category}`}>
-                    <button onClick="">Submit and Start the Game</button>
+                    <button>Submit and Start the Game</button>
                     </Link>
                     
                 </form>

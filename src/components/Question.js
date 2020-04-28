@@ -47,9 +47,6 @@ class Question extends React.Component {
         answers.sort(() => Math.random() -0.5);
         this.setState({ answerArray: answers })
     }
-    
-    // if checked button === correct_answer, setState score + 1
-
 
     render(){
 
@@ -60,7 +57,7 @@ class Question extends React.Component {
                 <h3>{atob(this.props.questionContent.question)}</h3>
                 {this.state.userNames.map(user => {
                     return(
-                    <form>
+                    <div>
                     <h4>{this.state.playersNumber > 1? user:""}</h4>
                     {this.state.answerArray.map(answer => {
                         return(
@@ -77,7 +74,7 @@ class Question extends React.Component {
                             </div>
                         )
                     })}
-                    </form>
+                    </div>
                 )})}
 
             </div>
