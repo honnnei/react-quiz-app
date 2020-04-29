@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 class Question extends Component {
     constructor(props){
         super(props)
@@ -16,6 +18,7 @@ class Question extends Component {
     
 
     handleChange = (event) => {
+        console.log('delete me')
         const {value} = event.target;
         const user = event.target.id;
         if((value === this.state.questionInfo.questionsArray[this.state.questionNumber].correct_answer) && (this.state.userScores[user] === 0)) { 
@@ -71,7 +74,7 @@ class Question extends Component {
             <div>
                 <h3>Question {this.state.questionNumber}</h3>
                 {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>}
-                <h1>{this.props.location.state.questionState.questionsArray[this.props.location.state.qNumber].question}</h1>
+                <h1>{entities.decode(this.props.location.state.questionState.questionsArray[this.props.location.state.qNumber].question)}</h1>
               {/* { this.props.location.state.qNumber ? <h1>{this.props.location.state.questionState.questionsArray[ this.props.location.state.qNumber].question}</h1> : <h1>Question title loading</h1>} */}
               <div className="radio-container">
 
@@ -90,7 +93,7 @@ class Question extends Component {
                                                 value={answer}
                                                 onChange={this.handleChange}
                                                 />
-                                            <label for={answer}> {answer} </label>
+                                            <label for={answer}> {entities.decode(answer)} </label>
                                         
                                     </div>
                                 )
@@ -101,9 +104,8 @@ class Question extends Component {
                             )})}
                         </div>
 
-                    
-
                 <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores, feedback: this.state.userScores}}} >
+
                         <input type="submit"  value="Next"/>
                     </Link> 
             </div>
