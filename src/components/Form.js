@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 class Form extends Component {
     constructor(){
         super()
@@ -97,7 +97,7 @@ class Form extends Component {
                         </select>
                     </label>
                     <Link to={`/gamepage/${this.state.forms.playersNumber}/${this.state.forms.difficulty}/${this.state.forms.category}`}>
-                    <button onClick="">Submit and Start the Game</button>
+                    <button>Submit and Start the Game</button>
                     </Link>
                     
                 </form>

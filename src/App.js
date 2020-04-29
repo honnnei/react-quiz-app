@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationBar from './components/Navbar';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import GamePage from './containers/GamePage';
 import PastScoresPage from './containers/PastScoresPage';
