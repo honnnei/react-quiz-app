@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -16,12 +16,9 @@ const NavigationBar = (props) => {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">QuizName</NavbarBrand>
-          <Nav className="mr-auto" navbar>
-            {/* <NavItem>
-              <NavLink href="/newgame/">New Game</NavLink>
-            </NavItem> */}
+          <Nav className="mr-auto" >
             <NavItem>
-              <NavLink href="/pastscores">Past Scores</NavLink>
+              <NavLink href="/">New Game</NavLink>
             </NavItem>
           </Nav>
       </Navbar>
