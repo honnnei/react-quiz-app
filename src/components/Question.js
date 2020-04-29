@@ -57,7 +57,7 @@ class Question extends React.Component {
                 <h3>{atob(this.props.questionContent.question)}</h3>
                 {this.state.userNames.map(user => {
                     return(
-                    <div>
+                    <form>
                     <h4>{this.state.playersNumber > 1? user:""}</h4>
                     {this.state.answerArray.map(answer => {
                         return(
@@ -74,7 +74,7 @@ class Question extends React.Component {
                             </div>
                         )
                     })}
-                    </div>
+                    </form>
                 )})}
 
             </div>
