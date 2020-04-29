@@ -1,8 +1,5 @@
 import React from 'react';
-//this.props.location.state.userScores
 function ScorePage(props) {
-    console.log(props.location.state);
-    console.log(props.location.state.stateFinal.userNames);
     return(
         <div>
             <h1>Scores Page</h1>

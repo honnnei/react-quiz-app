@@ -24,7 +24,6 @@ const entities = new Entities();
      }
 
     userCorrect = (user) => {
-        console.log(this.props.location.state.feedback[user]) 
         return(this.props.location.state.feedback[user] === 1 ? user + " was right": user + " was wrong")
         }
 
@@ -33,10 +32,6 @@ const entities = new Entities();
         let nextQuestionNumber = questionNumber + 1;
         let nextQNumberString = nextQuestionNumber.toString();
         let currentQuestionScores = this.props.location.state.questionScores;
-        console.log(this.props.location.state)
-        console.log(this.props.location.state.questionStateNext);
-
-        console.log(this.props.location.state.feedback)
         let stateNext = this.props.location.state.questionStateNext;
         return (
             <div>
@@ -47,7 +42,6 @@ const entities = new Entities();
                 {questionNumber == 9 ? <Link to={{ pathname:"/scores", state:{userScores: currentQuestionScores, stateFinal: stateNext }}}><input type="button" value="View Scores!" /></Link> : <Link to={{pathname:`/question/${nextQNumberString}`, state: {qNumber: nextQuestionNumber, questionState: stateNext, previousQuestionScores: currentQuestionScores}}} ><input type="submit"  value="Next Question"/></Link>}
           </div>
                
-            
         )
     }
 }

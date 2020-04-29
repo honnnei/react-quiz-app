@@ -35,10 +35,8 @@ class GamePage extends React.Component {
     updateUsers = (e) => {
         const obj = e.target.name
         const name = e.target.value
-        console.log(name);
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
         this.setState({ userScores: { ...this.state.userScores, [name]: 0}})
-        console.log(this.state.userNames)
     }
 
 
@@ -51,17 +49,13 @@ class GamePage extends React.Component {
             });
             this.getQuestions();
        
-       //call api within componenetDidMount();
     }
 
     getQuestions = async () => {
         if(!this.state.category){
             console.log('error in getQuestions, category does not exist')
         }
-        // &encode=base64
         const url = `https://opentdb.com/api.php?amount=10&category=${this.props.match.params.category}&difficulty=${this.props.match.params.difficulty}&type=multiple`;
-        // const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
-        console.log(url);
         const response = await fetch(url);
         const data = await response.json();      
 
@@ -85,17 +79,13 @@ class GamePage extends React.Component {
                         return (<h3>{user}:{this.state.userScores[user]}</h3>)
                     })}
                 </div>
-                {/* <div className="question-container">
-                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
-                </div> */}
+                
 
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
 
-                    {/* <button onClick={this.getQuestions}>get questions</button> */}
                    <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}}   ><input type="submit"  value="Start Game" /></Link>
-                   {/* onClick={this.getQuestions} */}
 
                 </form>
                 </div>
