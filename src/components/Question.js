@@ -1,5 +1,9 @@
 import React from 'react';
 
+const Entities = require('html-entities').AllHtmlEntities;
+ 
+const entities = new Entities();
+
 class Question extends React.Component {
     constructor(props){
         super(props)
@@ -18,10 +22,10 @@ class Question extends React.Component {
     handleChange = (event) => {
         const {value} = event.target;
         const user = event.target.id;
-        if((value === atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] === 0)) { 
+        if((value === this.props.questionContent.correct_answer) && (this.state.userScores[user] === 0)) { 
             this.props.totalScore(1, user);
             this.setState( { userScores: { ...this.state.userScores, [user]: 1}} )
-        }else if((value !== atob(this.props.questionContent.correct_answer)) && (this.state.userScores[user] === 1)){
+        }else if((value !== this.props.questionContent.correct_answer) && (this.state.userScores[user] === 1)){
             this.props.totalScore(-1, user);
             this.setState( { userScores: { ...this.state.userScores, [user]: 0}} )
         };
@@ -42,8 +46,8 @@ class Question extends React.Component {
 
     shuffleArray = () => {
         let answers = [];
-        answers.push(atob(this.props.questionContent.correct_answer));
-        this.props.questionContent.incorrect_answers.forEach((answer) => answers.push(atob(answer)));
+        answers.push(this.props.questionContent.correct_answer);
+        this.props.questionContent.incorrect_answers.forEach((answer) => answers.push(answer));
         answers.sort(() => Math.random() -0.5);
         this.setState({ answerArray: answers })
     }
@@ -54,7 +58,7 @@ class Question extends React.Component {
 
             <div className="Question">
                 <h2>Question {this.props.id + 1}</h2>
-                <h3>{atob(this.props.questionContent.question)}</h3>
+                <h3>{entities.decode(this.props.questionContent.question)}</h3>
                 <div className="radio-container">
 
                 {this.state.userNames.map((user,i) => {
@@ -73,7 +77,7 @@ class Question extends React.Component {
                                                 onChange={this.handleChange}
                                             
                                                 />
-                                            <label htmlFor={answer}> {answer} </label>
+                                            <label htmlFor={answer}> {entities.decode(answer)} </label>
                                         
                                     </div>
                                 )

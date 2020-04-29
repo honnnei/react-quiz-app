@@ -2,6 +2,10 @@ import React from 'react';
 import Question from '../components/Question';
 import { Link } from 'react-router-dom';
 
+const Entities = require('html-entities').AllHtmlEntities;
+ 
+const entities = new Entities();
+
 class GamePage extends React.Component {
     constructor(){
         super()
@@ -58,10 +62,8 @@ class GamePage extends React.Component {
         // const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
         console.log(url);
         const response = await fetch(url);
-        const data = await response.json();
- 
-        console.log(data.results[0]);
-        
+        const data = await response.json();      
+
         this.setState({questionsArray: data.results});
     }
 
