@@ -77,9 +77,9 @@ class GamePage extends React.Component {
                         return (<h3>{user}:{this.state.userScores[user]}</h3>)
                     })}
                 </div>
-                <form>
+                <div>
                     {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
-                </form>
+                </div>
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
