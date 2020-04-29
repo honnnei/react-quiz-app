@@ -16,10 +16,12 @@ class Question1 extends Component {
             answerArray: [],
             userNames: Object.values(this.props.location.state.questionState.userNames),
         }
+        
     }
     
 
     handleChange = (event) => {
+        console.log('delete me')
         const {value} = event.target;
         const user = event.target.id;
         if((value === this.state.questionInfo.questionsArray[this.state.questionNumber].correct_answer) && (this.state.userScores[user] === 0)) { 
