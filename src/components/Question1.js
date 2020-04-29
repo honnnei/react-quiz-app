@@ -103,7 +103,7 @@ class Question1 extends Component {
 
                     
 
-                <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores}}} >
+                <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores, feedback: this.state.userScores}}} >
                         <input type="submit"  value="Next"/>
                     </Link> 
             </div>
