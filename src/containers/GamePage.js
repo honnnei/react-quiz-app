@@ -69,15 +69,16 @@ class GamePage extends React.Component {
     render()  {
         return(
             <div className='GamePage'>
-                <h1>Game Page</h1>
-                <h2>Total Score: {this.state.totalScore} </h2>
-                <div>
+                {/* <h1>Game Page</h1> */}
+                {/* <h2>Total Score: {this.state.totalScore} </h2> */}
+                <div className="scores-container">
                     <h2>Scores:</h2>
                     {(Object.values(this.state.userNames)).map(user => {
                         return (<h3>{user}:{this.state.userScores[user]}</h3>)
                     })}
                 </div>
-                <div>
+                <div className="question-container">
+
                     {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
                 </div>
                 <form className="name-form">

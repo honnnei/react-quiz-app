@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import GamePage from './containers/GamePage';
 import PastScoresPage from './containers/PastScoresPage';
+import './App.css';
 
 function App() {
   return (
