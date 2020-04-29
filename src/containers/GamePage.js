@@ -95,14 +95,10 @@ class GamePage extends React.Component {
                    {/* onClick={this.getQuestions} */}
 
                 </form>
+                </div>
 
-//                 <Link to={{ 
-//                     pathname:"/scores",
-//                     state:{userScores: this.state.userScores, userNames: this.state.userNames}
-//                 }}>
-//                     <input type="button" value="View Scores!" />
-//                 </Link>
-            </div>
+
+           
 
         );
     }
