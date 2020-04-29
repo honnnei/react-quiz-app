@@ -1,5 +1,6 @@
 import React from 'react';
 import Question from '../components/Question'
+import { Link } from 'react-router-dom';
 
 class GamePage extends React.Component {
     constructor(){
@@ -9,11 +10,8 @@ class GamePage extends React.Component {
             difficulty: null,
             category: null,
             questionsArray: [],
-            userNames: {
-                
-            },
+            userNames: {},
             userScores: {
-
             },
             totalScore: 0
         }
@@ -54,12 +52,18 @@ class GamePage extends React.Component {
         if(!this.state.category){
             console.log('error in getQuestions, category does not exist')
         }
-        const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
+        // &encode=base64
+        const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
+        console.log(url);
+        const response = await fetch(url);
+        const data = await response.json();
+ 
+        console.log(data.results[0]);
+        // const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
         const response = await fetch(url);
         const data = await response.json();
         this.setState({questionsArray: data.results});
         
-
     }
 
     totalScore = (n, user) => {
@@ -69,6 +73,13 @@ class GamePage extends React.Component {
     render()  {
         return(
             <div className='GamePage'>
+
+                <h1>Game Page</h1>
+                <h2>Total Score: {this.state.totalScore} </h2>
+                {/* <form>
+                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore}/>)}
+                </form> */}
+
                 {/* <h1>Game Page</h1> */}
                 {/* <h2>Total Score: {this.state.totalScore} </h2> */}
                 <div className="scores-container">
@@ -81,11 +92,13 @@ class GamePage extends React.Component {
 
                     {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
                 </div>
+
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
-                    <input type="submit" onClick={this.getQuestions} value="Start Game" />
-
+                    <button onClick={this.getQuestions}>get questions</button>
+                   <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state}}}   ><input type="submit"  value="Start Game" /></Link>
+                   {/* onClick={this.getQuestions} */}
                 </form>
             </div>
         );
