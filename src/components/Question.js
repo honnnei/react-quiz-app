@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 const Entities = require('html-entities').AllHtmlEntities;
- 
 const entities = new Entities();
-
-class Question1 extends Component {
+class Question extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -16,7 +14,6 @@ class Question1 extends Component {
             answerArray: [],
             userNames: Object.values(this.props.location.state.questionState.userNames),
         }
-        
     }
     
 
@@ -107,9 +104,8 @@ class Question1 extends Component {
                             )})}
                         </div>
 
-                    
+                <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores, feedback: this.state.userScores}}} >
 
-                <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores}}} >
                         <input type="submit"  value="Next"/>
                     </Link> 
             </div>
@@ -117,4 +113,4 @@ class Question1 extends Component {
     }
 }
 
-export default Question1;
+export default Question;
