@@ -8,30 +8,25 @@ class Question1 extends Component {
             questionNumber: parseInt(this.props.match.params.qNumber),
             questionInfo: this.props.location.state.questionState,
             userScores: {},
+            totalScores: this.props.location.state.previousQuestionScores,
             answerArray: [],
             userNames: Object.values(this.props.location.state.questionState.userNames),
         }
     }
     
 
-    // getParam = () => {
-    //     this.setState({
-    //         questionNumber: parseInt(this.props.match.params.qNumber),
-    //         questionInfo: this.props.location.state.questionState
-    //     });
-    //     // this.forceUpdate();
-    // }
-
     handleChange = (event) => {
         const {value} = event.target;
         const user = event.target.id;
         if((value === this.state.questionInfo.questionsArray[this.state.questionNumber].correct_answer) && (this.state.userScores[user] === 0)) { 
-            this.state.questionInfo.totalScore(1, user);
+            this.totalScore(1, user);
             this.setState( { userScores: { ...this.state.userScores, [user]: 1}} )
         }else if((value !== this.state.questionInfo.questionsArray[this.state.questionNumber].correct_answer) && (this.state.userScores[user] === 1)){
-            this.state.questionInfo.totalScore(-1, user);
+            this.totalScore(-1, user);
             this.setState( { userScores: { ...this.state.userScores, [user]: 0}} )
         };
+        console.log(this.state.userScores);
+        console.log(this.state.totalScores)
     }
 
     componentDidMount(){
@@ -40,10 +35,14 @@ class Question1 extends Component {
         this.scores();
     };
 
+    totalScore = (n, user) => {
+        this.setState({ totalScores: { ...this.state.totalScores, [user]: this.state.totalScores[user]+n}})
+    }
+
     scores = () => {
         let obj = {};
-        for(let i=0; i< this.state.questionInfo.userNames.length;i++){
-            obj[this.state.questionInfo.userNames[i]] = 0;
+        for(let i=0; i< this.state.userNames.length;i++){
+            obj[this.state.userNames[i]] = 0;
         }
         this.setState({userScores : obj})
     }
@@ -55,18 +54,13 @@ class Question1 extends Component {
         answers.sort(() => Math.random() -0.5);
         this.setState({ answerArray: answers })
     }
-
-  
-
     
     render() {
-        console.log(this.state.questionInfo.questionsArray[this.state.questionNumber].correct_answer);
         console.log(this.state.userNames);
-        console.log(this.state.questionNumber);
-        console.log(this.state.questionInfo);
+        console.log(this.state.userScores);
+        console.log(this.state.totalScores);
         console.log('hi');
         let queNumber =  this.props.location.state.qNumber;
-        console.log(this.props.location.state.questionState);
         let nextQuestionNumber = this.state.questionNumber + 1;
         let nextQNumberString = nextQuestionNumber.toString();
         let nextQNumber = queNumber + 1; 
@@ -107,8 +101,9 @@ class Question1 extends Component {
                             )})}
                         </div>
 
+                    
 
-                <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state}}} >
+                <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores}}} >
                         <input type="submit"  value="Next"/>
                     </Link> 
             </div>

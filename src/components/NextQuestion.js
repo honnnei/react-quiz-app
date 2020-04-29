@@ -26,6 +26,7 @@ import { render } from 'react-dom';
         let questionNumber = this.state.previousQuestionNumber;
         let nextQuestionNumber = questionNumber + 1;
         let nextQNumberString = nextQuestionNumber.toString();
+        let currentQuestionScores = this.props.location.state.questionScores;
         console.log(typeof(nextQuestionNumber));
         console.log(typeof(nextQNumberString));
         console.log(nextQuestionNumber);
@@ -35,7 +36,10 @@ import { render } from 'react-dom';
         return (
             <div>
                 <h1>Next Question</h1>
-               <Link to={{pathname:`/question/${nextQNumberString}`, state: {qNumber: nextQuestionNumber, questionState: stateNext}}} ><input type="submit"  value="Next Question"/></Link>
+                    
+                {questionNumber == 9 ? <button>Show Scores</button> : <Link to={{pathname:`/question/${nextQNumberString}`, state: {qNumber: nextQuestionNumber, questionState: stateNext, previousQuestionScores: currentQuestionScores}}} ><input type="submit"  value="Next Question"/></Link>}
+
+               
             </div>
         )
     }
