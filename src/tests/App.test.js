@@ -19,17 +19,39 @@ describe('App', () => {
     expect(wrapper.containsMatchingElement(<Route />)).toEqual(true);
   });
 
-  // test("render a button with text of 'increment'", () => {
-  //   expect(wrapper.find('#increment-btn').text()).toBe('Increment Me!');
-  // });
+  test('contains 5 Routes', () => {
+    expect((wrapper.find('Route').length)).toEqual(5);
+  });
 
-  // test("render the initial value of state in a div", () => {
-  //   expect(wrapper.find("#counter-value").text()).toBe("0");
-  // });
+  it('Route to HomePage is exact', () => {                                       
+    let route = wrapper.find("[path='/']");
+    expect(route).prop('exact').toBeTruthy();
+   });
 
-  // test("render the click event of increment button and increment counter value", () => {
-  //   wrapper.find('#increment-btn').simulate('click');
-  //   expect(wrapper.find('#counter-value').text()).toBe("1");
-  // });
+   it('Route to Question is exact', () => {                                       
+    let route = wrapper.find("[path='/question/:qNumber']");
+    expect(route).prop('exact').toBeTruthy();
+   });
+  
+   it('Route to NextQuestion is exact', () => {                                       
+    let route = wrapper.find("[path='/nextquestion/:previousQuestionNum]");
+    expect(route).prop('exact').toBeTruthy();
+   });
+
+   it('Route to ScorePage is exact', () => {                                       
+    let route = wrapper.find("[path='/scores']");
+    expect(route).prop('exact').toBeTruthy();
+   });
+
+  it('includes Route to ScorePage', () => {                                       
+    let route = wrapper.find("[path='/scores']");
+    expect(route).prop('component').toEqual('ScorePage');
+    // expect(wrapper.find("[path='/scores']")).toBeTruthy();
+   });
+
+  it('redirects to GamePage', () => {
+    let wrapper = mount(<App/>)
+    expect(wrapper.find(Route).prop('location').render).toEqual("{(props) => <GamePage {...props} />}")
+  })
 
 });

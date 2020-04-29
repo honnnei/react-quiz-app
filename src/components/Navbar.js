@@ -17,10 +17,6 @@ const NavigationBar = (props) => {
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">QuizName</NavbarBrand>
           <Nav className="mr-auto" >
-            //navbar line above
-            <NavItem>
-              <NavLink href="/pastscores">Past Scores</NavLink>    
-            </NavItem>
             <NavItem>
               <NavLink href="/">New Game</NavLink>
             </NavItem>
