@@ -3,8 +3,7 @@ import NavigationBar from './components/Navbar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import GamePage from './containers/GamePage';
-import PastScoresPage from './containers/PastScoresPage';
-import Question1 from './components/Question1'
+import Question from './components/Question'
 import NextQuestion from './components/NextQuestion'
 import ScorePage from './containers/ScorePage';
 import './App.css';
@@ -22,8 +21,7 @@ function App() {
               path='/gamepage/:playersNumber/:difficulty/:category'  
               render={(props) => <GamePage {...props} />} 
           />
-          <Route path='/pastscores' exact component={PastScoresPage}/>
-          <Route path='/question/:qNumber' exact render={(props) => <Question1 {...props} />}
+          <Route path='/question/:qNumber' exact render={(props) => <Question {...props} />}
           />
           <Route path='/nextquestion/:previousQuestionNum' exact render={(props) => <NextQuestion {...props} />}
           />

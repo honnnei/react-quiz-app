@@ -7,7 +7,7 @@ import Question from '../components/Question'
 describe('<Question />', () => {
 
     it('should render main Question div', () => {
-        const wrapper = shallow(<Question  key={1} id={1} questionContent={{category:"General Knowledge",type:"multiple",difficulty:"easy",question:"What is the largest organ of the human body?", correct_answer:"Skin",incorrect_answers:["Heart","Intestine","Liver"]}} />)
+        const wrapper = shallow(<Question key={1} id={1} questionContent={{category:"General Knowledge",type:"multiple",difficulty:"easy",question:"What is the largest organ of the human body?", correct_answer:"Skin",incorrect_answers:["Heart","Intestine","Liver"]}} />)
         expect(wrapper.exists('.Question')).toEqual(true);
     } )
 })
