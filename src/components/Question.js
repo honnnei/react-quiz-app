@@ -55,27 +55,33 @@ class Question extends React.Component {
             <div className="Question">
                 <h2>Question {this.props.id + 1}</h2>
                 <h3>{atob(this.props.questionContent.question)}</h3>
+                <div className="radio-container">
+
                 {this.state.userNames.map(user => {
                     return(
-                    <div>
-                    <h4>{this.state.playersNumber > 1? user:""}</h4>
-                    {this.state.answerArray.map(answer => {
-                        return(
-                            <div>
-                                    <input 
-                                        type="radio" 
-                                        id={user} 
-                                        name={`answer_${this.props.id}`} 
-                                        value={answer}
-                                        onChange={this.handleChange}
-                                        />
-                                    <label for={answer}> {answer} </label>
-                                
-                            </div>
-                        )
-                    })}
-                    </div>
+                        <div className="radio-buttons">
+                            <form>
+                            <h4>{this.state.playersNumber > 1? user:""}</h4>
+                            {this.state.answerArray.map(answer => {
+                                return(
+                                    <div>
+                                            <input 
+                                                type="radio" 
+                                                id={user} 
+                                                name={`answer_${this.props.id}`} 
+                                                value={answer}
+                                                onChange={this.handleChange}
+                                                />
+                                            <label for={answer}> {answer} </label>
+                                        
+                                    </div>
+                                )
+                            })}
+                            </form>
+                        </div>
                 )})}
+                    </div>
+
 
             </div>
 
