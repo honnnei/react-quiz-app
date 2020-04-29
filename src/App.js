@@ -1,11 +1,13 @@
 import React from 'react';
 import NavigationBar from './components/Navbar';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import GamePage from './containers/GamePage';
 import PastScoresPage from './containers/PastScoresPage';
 import Question1 from './components/Question1'
 import NextQuestion from './components/NextQuestion'
+import './App.css';
+
 
 function App() {
   return (
