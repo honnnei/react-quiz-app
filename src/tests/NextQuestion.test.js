@@ -6,8 +6,55 @@ import NextQuestion from '../components/NextQuestion'
 
 describe('NextQuestion', () => {
 
-    it('should render main Question div', () => {
-        // const wrapper = shallow(<NextQuestion key={1} id={1} questionContent={{category:"General Knowledge",type:"multiple",difficulty:"easy",question:"What is the largest organ of the human body?", correct_answer:"Skin",incorrect_answers:["Heart","Intestine","Liver"]}} />)
-        // expect(wrapper.exists('.Question')).toEqual(true);
-    } )
-})
+    let dumbieState = {
+        previousQuestionScores:{
+            R: 0,
+            Ro: 0,
+            Ror: 0,
+            Rori: 0,
+            Rorie: 0
+        },
+        qNumber: 0,
+        questionState: {
+            category: "9",
+            difficulty: "easy",
+            playersNumber: "1",
+            questionsArray: [{category: "General Knowledge", type: "multiple", difficulty: "easy", question: "In the video-game franchise Kingdom Hearts, the main protagonist, carries a weapon with what shape?", correct_answer: "Key", incorrect_answers: ["Sword", "Pen", "Cellphone"]}],
+            totalScore: 0,
+            userNames: {0: "Rorie"},
+            userScores: {R: 0, Ro: 0, Ror: 0, Rori: 0, Rorie: 0}
+        }
+    }
+    let dumbieScores = {R: 0, Ro: 0, Ror: 0, Rori: 0, Rorie: 1}
+    let dumbieFeedback = {Rorie: 1}
+
+
+    let wrapper;
+    beforeEach(() => {
+        wrapper = shallow(<NextQuestion 
+            match={{
+                isExact: true,
+                params: {previousQuestionNum: "0"},
+                path: "/nextquestion/:previousQuestionNum",
+                url: "/nextquestion/0"}} 
+            location={{state: {queNumber: 1, questionStateNext: dumbieState, questionScore: dumbieScores, feedback: dumbieFeedback }}}/>);
+    });
+
+    it('should render main User Feedback div', () => {
+        expect(wrapper.exists('.user-feedback')).toEqual(true);
+    });
+
+    it('should render the Next Question div', () => {
+        expect(wrapper.exists('.nextquestion')).toEqual(true);
+    });
+
+});
+
+
+
+
+
+
+
+//npm test -- --coverage --watchAll=false  
+    
