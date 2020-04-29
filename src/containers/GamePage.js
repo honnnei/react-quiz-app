@@ -11,8 +11,7 @@ class GamePage extends React.Component {
             category: null,
             questionsArray: [],
             userNames: {},
-            userScores: {
-            },
+            userScores: {},
             totalScore: 0
         }
     }
@@ -54,14 +53,13 @@ class GamePage extends React.Component {
         }
         // &encode=base64
         const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
+        // const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
         console.log(url);
         const response = await fetch(url);
         const data = await response.json();
  
         console.log(data.results[0]);
-        // const url = `https://opentdb.com/api.php?amount=10&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
-        const response = await fetch(url);
-        const data = await response.json();
+        
         this.setState({questionsArray: data.results});
         
     }
@@ -76,22 +74,16 @@ class GamePage extends React.Component {
 
                 <h1>Game Page</h1>
                 <h2>Total Score: {this.state.totalScore} </h2>
-                {/* <form>
-                    {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore}/>)}
-                </form> */}
-
-                {/* <h1>Game Page</h1> */}
-                {/* <h2>Total Score: {this.state.totalScore} </h2> */}
                 <div className="scores-container">
                     <h2>Scores:</h2>
                     {(Object.values(this.state.userNames)).map(user => {
                         return (<h3>{user}:{this.state.userScores[user]}</h3>)
                     })}
                 </div>
-                <div className="question-container">
+                {/* <div className="question-container">
 
                     {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
-                </div>
+                </div> */}
 
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
