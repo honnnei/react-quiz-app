@@ -1,5 +1,5 @@
 import React from 'react';
-import Question from '../components/Question'
+import Question from '../components/Question';
 import { Link } from 'react-router-dom';
 
 class GamePage extends React.Component {
@@ -10,6 +10,7 @@ class GamePage extends React.Component {
             difficulty: null,
             category: null,
             questionsArray: [],
+
             userNames: {},
             userScores: {},
             totalScore: 0
@@ -21,7 +22,7 @@ class GamePage extends React.Component {
     addUserNames = (num) => {
         let html = []
         for(let i=0; i<num; i++) {
-            html.push(<label>{`Player ${i+1}`}<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/></label>)
+            html.push(<label  key = {i+1} >{`Player ${i+1}`}<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers} placeholder="Please enter the play's name." required/></label>)
         }
         
         return html
@@ -30,6 +31,7 @@ class GamePage extends React.Component {
     updateUsers = (e) => {
         const obj = e.target.name
         const name = e.target.value
+        console.log(name);
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
         this.setState({ userScores: { ...this.state.userScores, [name]: 0}})
     }
@@ -61,7 +63,6 @@ class GamePage extends React.Component {
         console.log(data.results[0]);
         
         this.setState({questionsArray: data.results});
-        
     }
 
     totalScore = (n, user) => {
@@ -72,6 +73,7 @@ class GamePage extends React.Component {
         return(
             <div className='GamePage'>
 
+
                 <h1>Game Page</h1>
                 <h2>Total Score: {this.state.totalScore} </h2>
                 <div className="scores-container">
@@ -81,18 +83,27 @@ class GamePage extends React.Component {
                     })}
                 </div>
                 {/* <div className="question-container">
-
                     {this.state.questionsArray.map((question, i) => <Question questionContent = {question} key={i} id={i} totalScore = {this.totalScore} playersNumber={this.state.playersNumber} userNames={this.state.userNames}/>)}
                 </div> */}
 
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
+
                     <button onClick={this.getQuestions}>get questions</button>
                    <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}}   ><input type="submit"  value="Start Game" /></Link>
                    {/* onClick={this.getQuestions} */}
+
                 </form>
+
+//                 <Link to={{ 
+//                     pathname:"/scores",
+//                     state:{userScores: this.state.userScores, userNames: this.state.userNames}
+//                 }}>
+//                     <input type="button" value="View Scores!" />
+//                 </Link>
             </div>
+
         );
     }
    
