@@ -57,7 +57,7 @@ class Question extends React.Component {
                 <h3>{atob(this.props.questionContent.question)}</h3>
                 <div className="radio-container">
 
-                {this.state.userNames.map(user => {
+                {this.state.userNames.map((user,i) => {
                     return(
                         <div className="radio-buttons">
                             <form>
@@ -71,8 +71,9 @@ class Question extends React.Component {
                                                 name={`answer_${this.props.id}`} 
                                                 value={answer}
                                                 onChange={this.handleChange}
+                                            
                                                 />
-                                            <label for={answer}> {answer} </label>
+                                            <label htmlFor={answer}> {answer} </label>
                                         
                                     </div>
                                 )

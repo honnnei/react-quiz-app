@@ -25,7 +25,7 @@ class GamePage extends React.Component {
     addUserNames = (num) => {
         let html = []
         for(let i=0; i<num; i++) {
-            html.push(<label>{`Player ${i+1}`}<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers}/></label>)
+            html.push(<label  key = {i+1} >{`Player ${i+1}`}<input type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers} placeholder="Please enter the play's name." required/></label>)
         }
         
         return html
@@ -34,6 +34,7 @@ class GamePage extends React.Component {
     updateUsers = (e) => {
         const obj = e.target.name
         const name = e.target.value
+        console.log(name);
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
         this.setState({ userScores: { ...this.state.userScores, [name]: 0}})
     }
