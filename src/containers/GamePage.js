@@ -26,7 +26,7 @@ class GamePage extends React.Component {
     addUserNames = (num) => {
         let html = []
         for(let i=0; i<num; i++) {
-            html.push(<label  key = {i+1} >{`Player ${i+1}`}<input className="userInput" type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers} placeholder="Please enter the play's name." required/></label>)
+            html.push(<label  key = {i+1} >{`Player ${i+1}`}<input className="userInput" type="text" value={this.state.userNames[i]} name={`${i}`} onChange={this.updateUsers} placeholder="Please enter the player's name." required/></label>)
         }
         
         return html
@@ -67,6 +67,7 @@ class GamePage extends React.Component {
     }
 
     render()  {
+        console.log(this.state.userScores)
         return(
             <div className='GamePage'>
 
@@ -84,8 +85,8 @@ class GamePage extends React.Component {
                 <form className="name-form">
                     <h3>Enter player name{this.state.playersNumber > 1? "s":""}</h3>
                     {this.addUserNames(this.state.playersNumber)}
-
-                   <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}}   ><input type="submit"  value="Start Game" className="button"/></Link>
+                    {Object.keys(this.state.userScores).length !== 0? <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}}   ><input type="submit"  value="Start Game" className="button"/></Link> : "" }
+                    {/* <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}}   ><input type="submit"  value="Start Game" className="button"/></Link> */}
 
                 </form>
                 </div>
