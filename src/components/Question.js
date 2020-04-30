@@ -18,7 +18,6 @@ class Question extends Component {
     
 
     handleChange = (event) => {
-        console.log('delete me')
         const {value} = event.target;
         const user = event.target.id;
         if((value === this.state.questionInfo.questionsArray[this.state.questionNumber].correct_answer) && (this.state.userScores[user] === 0)) { 
@@ -28,12 +27,9 @@ class Question extends Component {
             this.totalScore(-1, user);
             this.setState( { userScores: { ...this.state.userScores, [user]: 0}} )
         };
-        console.log(this.state.userScores);
-        console.log(this.state.totalScores)
     }
 
     componentDidMount(){
-        // this.getParam();
         this.shuffleArray();
         this.scores();
     };
@@ -59,30 +55,23 @@ class Question extends Component {
     }
     
     render() {
-        console.log(this.state.userNames);
-        console.log(this.state.userScores);
-        console.log(this.state.totalScores);
-        console.log('hi');
         let queNumber =  this.props.location.state.qNumber;
         let nextQuestionNumber = this.state.questionNumber + 1;
-        let nextQNumberString = nextQuestionNumber.toString();
         let nextQNumber = queNumber + 1; 
         let state = this.props.location.state.questionState;
     
 
         return (
-            <div>
+            <div className="question">
                 <h3>Question {this.state.questionNumber}</h3>
+                <h4>{this.state.questionInfo.questionsArray[this.state.questionNumber].question}</h4>
                 {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>}
-                <h1>{entities.decode(this.props.location.state.questionState.questionsArray[this.props.location.state.qNumber].question)}</h1>
-              {/* { this.props.location.state.qNumber ? <h1>{this.props.location.state.questionState.questionsArray[ this.props.location.state.qNumber].question}</h1> : <h1>Question title loading</h1>} */}
-              <div className="radio-container">
+                  <div className="radio-container">
 
-                {this.state.userNames.map(user => {
+                 {this.state.userNames.map(user => {
                     return(
-                        <div className="radio-buttons">
+                        <div className="radio-button">
                             <form>
-                            <h4>{this.state.questionInfo.playersNumber > 1? user:""}</h4>
                             {this.state.answerArray.map(answer => {
                                 return(
                                     <div>
