@@ -64,7 +64,7 @@ class Question extends Component {
         return (
             <div className="question">
                 <h3>Question {this.state.questionNumber}</h3>
-                <h4>{this.state.questionInfo.questionsArray[this.state.questionNumber].question}</h4>
+                <h4>{entities.decode(this.state.questionInfo.questionsArray[this.state.questionNumber].question)}</h4>
                 {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>}
                   <div className="radio-container">
 
