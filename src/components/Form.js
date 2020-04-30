@@ -57,7 +57,6 @@ class Form extends Component {
                             value={this.state.category}
                             name="category"
                             >
-                                <option value="any">Any Category</option>
                                 <option value="9">General Knowledge</option>
                                 <option value="27">Animals</option>
                                 <option value="25">Art</option>
@@ -82,6 +81,7 @@ class Form extends Component {
                                 <option value="17">Science &amp; Nature</option>
                                 <option value="21">Sports ⚽</option>
                                 <option value="28">Vehicles</option>              
+
                         </select>
                     </label>
                     <label className="game-start-input">

@@ -67,6 +67,7 @@ class GamePage extends React.Component {
     }
 
     render()  {
+        console.log(this.state.userScores)
         return(
             <div className='game-page-container'>
                 <form className="name-form">
@@ -75,9 +76,11 @@ class GamePage extends React.Component {
                     </div>
                     
                     {this.addUserNames(this.state.playersNumber)}
-                    <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}} >
+
+                    {Object.keys(this.state.userScores).length !== 0? <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}} >
                        <input type="submit"  value="Start Game" className="start-game-button-2"/>
-                    </Link>
+                    </Link> : "" }
+                    {/* <Link to={{pathname:'/question/0', state: {qNumber: 0, questionState: this.state, previousQuestionScores: this.state.userScores}}}   ><input type="submit"  value="Start Game" className="button"/></Link> */}
 
                 </form>
             </div>
