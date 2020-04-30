@@ -1,0 +1,43 @@
+.game-page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #90CAFD;
+    height: 100%;
+}
+
+.name-form{
+    /* height: 100%; */
+    padding: 5em;
+    /* height: 30em; */
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.name-input {
+    width: 100%;
+    display: flex;
+    font-size: 1em;
+    border-radius: 1em;
+}
+.name-input-box {
+    margin: 1em;
+    border-radius: 1em;
+    padding: 0.5em;
+    border: 0;
+}
+
+.start-game-button-2 {
+    border-radius: 1em;
+    border: 0;
+    padding: 1em;
+    background-color: #004480;
+    color: white;
+}
+.name-form-title{
+    font-size: 2em;
+    margin: 1em 0;
+}
