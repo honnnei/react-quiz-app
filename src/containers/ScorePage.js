@@ -7,7 +7,7 @@ function ScorePage(props) {
             <h1>Final Scores</h1>
             <div className="scores-container">
                     {(Object.values(props.location.state.stateFinal.userNames)).map(user => {
-                        return (<h3>{user}:&#160;&#160;&#160;{props.location.state.userScores[user]}</h3>)
+                        return (<h3 key={user}>{user}:&#160;&#160;&#160;{props.location.state.userScores[user]}</h3>)
                     })}
                 </div>
         </div>
