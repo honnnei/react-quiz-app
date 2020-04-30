@@ -48,9 +48,12 @@ describe('<GamePage />', () => {
     });
 
     it('should render change state onChange', () => {
-        const wrapper = mount(<BrowserRouter><GamePage  required={true}
-            match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/></BrowserRouter>); 
-        wrapper.find('.userInput').simulate('change', { target: { name: '1', value: '02' } })
+//         const wrapper = mount(<BrowserRouter><GamePage  required={true}
+//             match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/></BrowserRouter>); 
+//         wrapper.find('.userInput').simulate('change', { target: { name: '1', value: '02' } })
+
+        const wrapper = shallow(<GamePage  required={true}  match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
+        (wrapper.find('input').at(1)).simulate('change', { target: { name: '1', value: '02' } })
         setTimeout(() => {
             expect((wrapper.state('userNames.1'))).toEqual('02');
         }, 4000)      

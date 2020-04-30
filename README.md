@@ -17,8 +17,16 @@ reactstrap
 - struggled with the api encoding - fixed it by decoding it(atob), however, there are still occasional encoding errors in the text
 - struggled to test the fetch api function
 
-
 # Features to implement:
 - different types of questions (atm its only multiple choice)
 - displaying the category name during the quiz
 - showing Score details - which player answered which question correctly
+
+# Day 2 
+
+# Day 3 Stand Up:
+- Priority: combine single questions and what we've got 
+- Priority: adding score page
+- Extra: adding feedback in scores (which question you got right and wrong)
+- Extra: if we have time today - writing to a file - Past Scores Page
+

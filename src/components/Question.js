@@ -62,17 +62,16 @@ class Question extends Component {
     
 
         return (
-            <div>
+            <div className="question">
                 <h3>Question {this.state.questionNumber}</h3>
+                <h4>{this.state.questionInfo.questionsArray[this.state.questionNumber].question}</h4>
                 {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>}
-                <h1>{entities.decode(this.props.location.state.questionState.questionsArray[this.props.location.state.qNumber].question)}</h1>
-              <div className="radio-container">
+                  <div className="radio-container">
 
-                {this.state.userNames.map(user => {
+                 {this.state.userNames.map(user => {
                     return(
-                        <div className="radio-buttons">
+                        <div className="radio-button">
                             <form>
-                            <h4>{this.state.questionInfo.playersNumber > 1? user:""}</h4>
                             {this.state.answerArray.map(answer => {
                                 return(
                                     <div>
