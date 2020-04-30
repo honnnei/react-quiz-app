@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import '../css/Question.css';
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -63,14 +64,15 @@ class Question extends Component {
 
         return (
             <div className="question" style={{}}>
-                <h3>Question {this.state.questionNumber}</h3>
+                <h3>Question {this.state.questionNumber + 1}</h3>
                 <h4>{entities.decode(this.state.questionInfo.questionsArray[this.state.questionNumber].question)}</h4>
-                {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>}
+                {/* {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>} */}
                   <div className="radio-container">
 
                  {this.state.userNames.map(user => {
                     return(
                         <div className="radio-button">
+                            <h3>{user}</h3> 
                             <form>
                             {this.state.answerArray.map(answer => {
                                 return(

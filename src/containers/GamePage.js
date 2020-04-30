@@ -1,6 +1,7 @@
 import React from 'react';
 import Question from '../components/Question';
 import { Link } from 'react-router-dom';
+import '../css/GamePage.css';
 
 const Entities = require('html-entities').AllHtmlEntities;
  
@@ -14,7 +15,6 @@ class GamePage extends React.Component {
             difficulty: null,
             category: null,
             questionsArray: [],
-
             userNames: {},
             userScores: {},
             totalScore: 0
@@ -71,14 +71,7 @@ class GamePage extends React.Component {
             <div className='GamePage'>
 
 
-                <h1>Game Page</h1>
-                <h2>Total Score: {this.state.totalScore} </h2>
-                <div className="scores-container">
-                    <h2>Scores:</h2>
-                    {(Object.values(this.state.userNames)).map(user => {
-                        return (<h3>{user}:{this.state.userScores[user]}</h3>)
-                    })}
-                </div>
+                
                 
 
                 <form className="name-form">

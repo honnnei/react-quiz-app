@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
+import '../css/NextQuestion.css';
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();

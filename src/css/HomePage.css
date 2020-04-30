@@ -1,0 +1,55 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30em;
+}
+.home-page-container{
+    background-color: #90CAFD;
+    color: #004480C;
+}
+
+.quiz-form {
+    height: 20em;
+    width: 15em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+select {
+    margin: 1em 0;
+    border-radius: 1em;
+    padding: 1em;
+    text-align: justify;
+    text-justify: center;
+}
+
+.player-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+.category-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.difficulty-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.start-game-button{
+    border-radius: 1em;
+    border: 0;
+    padding: 1em;
+    background-color: #004480;
+    color: white;
+}
