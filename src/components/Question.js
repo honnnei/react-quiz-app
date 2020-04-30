@@ -63,20 +63,21 @@ class Question extends Component {
     
 
         return (
-            <div className="question" id={"category-"+this.state.questionInfo.category}>
-                <h3>Question {this.state.questionNumber}</h3>
-                <h4>{entities.decode(this.state.questionInfo.questionsArray[this.state.questionNumber].question)}</h4>
-                {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>}
-                  <div className="radio-container">
+            <div className="question-container"  id={"category-"+this.state.questionInfo.category}>
+                <h4>Question {this.state.questionNumber + 1}</h4>
+                <h2>{entities.decode(this.state.questionInfo.questionsArray[this.state.questionNumber].question)}</h2>
+                <div className="radio-container">
 
                  {this.state.userNames.map(user => {
                     return(
-                        <div className="radio-button">
+                        <div className="answer-list">
+                            <h3 className="player-name">{user}</h3> 
                             <form>
                             {this.state.answerArray.map(answer => {
                                 return(
-                                    <div>
+                                    <div className="single-answer">
                                             <input 
+                                                className="radio-button-answer"
                                                 type="radio" 
                                                 id={user} 
                                                 name={`answer_${this.state.questionNumber}`} 
@@ -93,11 +94,13 @@ class Question extends Component {
 
                             )})}
                         </div>
+                            <div className="next-question-button-container">
+                            <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores, feedback: this.state.userScores}}} >
 
-                <Link to={{pathname:`/nextquestion/${this.state.questionNumber}`, state: {queNumber: nextQNumber, questionStateNext: state, questionScores: this.state.totalScores, feedback: this.state.userScores}}} >
-
-                        <input type="submit"  value="Next"/>
-                    </Link> 
+                            <button className="next-question-button" type="submit">Check Answer!</button>
+                            </Link> 
+                            </div>
+                
             </div>
         );
     }

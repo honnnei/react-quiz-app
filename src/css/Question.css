@@ -1,6 +1,9 @@
-.question{
+
+.question-container{
     display: flex;
     flex-direction: column;
+    padding: 2em;
+    font-size: 1.5em;
     background-color:rgba(255,255,255,0.35);
     height: 100vh;
     background-position: center;
@@ -9,16 +12,49 @@
     position: relative;
     background-blend-mode: lighten;
     filter: grayscale(40%)
-}
-.question-container{
-    display: flex;
-    flex-direction: column;
+
 }
 .radio-container{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.answer-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-name {
+    text-align: center;
+    text-justify: center;
+}
+.single-answer {
+   margin: 0.5em; 
+}
+
+.radio-button-answer {
+    border: 0px;
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.next-question-button-container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.next-question-button {
+    border-radius: 1em;
+    border: 0;
+    /* width: 4em; */
+    font-size: 0.5em;
+    padding: 1em;
+    background-color: #004480;
+    color: white;
+}
+
 .radio-buttons{
     display: flex;
     flex-direction: row;
