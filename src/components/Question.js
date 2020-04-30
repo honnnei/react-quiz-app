@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import '../css/Question.css';
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -62,9 +63,9 @@ class Question extends Component {
     
 
         return (
-            <div className="question">
+            <div className="question" id={"category-"+this.state.questionInfo.category}>
                 <h3>Question {this.state.questionNumber}</h3>
-                <h4>{this.state.questionInfo.questionsArray[this.state.questionNumber].question}</h4>
+                <h4>{entities.decode(this.state.questionInfo.questionsArray[this.state.questionNumber].question)}</h4>
                 {this.state.userNames ? <h1>{this.state.userNames['0']}</h1> : <h1>player name loading</h1>}
                   <div className="radio-container">
 

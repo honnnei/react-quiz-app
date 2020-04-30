@@ -6,7 +6,7 @@ import GamePage from './containers/GamePage';
 import Question from './components/Question'
 import NextQuestion from './components/NextQuestion'
 import ScorePage from './containers/ScorePage';
-import './App.css';
+import './css/App.css';
 
 
 function App() {
