@@ -1,17 +1,20 @@
+.home-page-container{
+    background-color: #90CAFD;
+    height: 100%;
+}
+
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30em;
-}
-.home-page-container{
-    background-color: #90CAFD;
-    color: #004480C;
+    height: 80%;
 }
 
+
 .quiz-form {
-    height: 20em;
-    width: 15em;
+    padding: 2em;
+    height: 30em;
+    width: 20em;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -26,25 +29,15 @@ select {
     text-justify: center;
 }
 
-.player-input {
+.game-start-input {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content:center;
+    letter-spacing: 0.05em;
+    font-size: 1em;
 }
 
-.category-input {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.difficulty-input {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
 
 .start-game-button{
     border-radius: 1em;

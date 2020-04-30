@@ -38,7 +38,7 @@ class Form extends Component {
         return (
             <div className="form-container">
                 <form className="quiz-form">
-                    <label className="player-input">
+                    <label className="game-start-input">
                         Enter the number of players:
                         <select 
                             onChange={this.updateState} 
@@ -50,7 +50,7 @@ class Form extends Component {
                                 <option value="4">4</option>
                         </select>
                     </label>
-                    <label className="category-input">
+                    <label className="game-start-input">
                         Choose your quiz category:
                         <select 
                             onChange={this.updateState} 
@@ -80,19 +80,19 @@ class Form extends Component {
                                 <option value="30">Science: Gadgets</option>
                                 <option value="19">Science: Mathematics</option>
                                 <option value="17">Science &amp; Nature</option>
-                                <option value="21">Sports</option>
+                                <option value="21">Sports ⚽</option>
                                 <option value="28">Vehicles</option>              
                         </select>
                     </label>
-                    <label className="difficulty-input">
+                    <label className="game-start-input">
                         Choose the difficulty level:
                         <select 
                             onChange={this.updateState} 
                             value={this.state.difficulty}
                             name="difficulty">
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
+                                <option value="easy">Easy 🤑</option>
+                                <option value="medium">Medium 🤑</option>
+                                <option value="hard">Hard 🤑</option>
                         </select>
                     </label>
                     <Link to={`/gamepage/${this.state.forms.playersNumber}/${this.state.forms.difficulty}/${this.state.forms.category}`}>
