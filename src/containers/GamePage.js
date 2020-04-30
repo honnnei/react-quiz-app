@@ -55,11 +55,17 @@ class GamePage extends React.Component {
         if(!this.state.category){
             console.log('error in getQuestions, category does not exist')
         }
-        const url = `https://opentdb.com/api.php?amount=10&category=${this.props.match.params.category}&difficulty=${this.props.match.params.difficulty}&type=multiple`;
-        const response = await fetch(url);
-        const data = await response.json();      
-
-        this.setState({questionsArray: data.results});
+        let url = `https://opentdb.com/api.php?amount=10&category=${this.props.match.params.category}&difficulty=${this.props.match.params.difficulty}&type=multiple`;
+        let response = await fetch(url);
+        let data = await response.json(); 
+        if(data.response_code!==0){
+            url = `https://opentdb.com/api.php?amount=5&category=${this.props.match.params.category}&difficulty=${this.props.match.params.difficulty}&type=multiple`;
+            response = await fetch(url);
+            data = await response.json();
+        }     
+        if(data.response_code!==0){
+            console.log("not enought questions in the api")
+        }else{this.setState({questionsArray: data.results});}
     }
 
     totalScore = (n, user) => {
