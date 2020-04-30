@@ -25,7 +25,7 @@ const entities = new Entities();
      }
 
     userCorrect = (user) => {
-        return(this.props.location.state.feedback[user] === 1 ? user + " was right ✓": user + " was wrong ✕")
+        return(this.props.location.state.feedback[user] === 1 ? user + " was correct ✓": user + " was incorrect ✗")
         }
 
     render() {

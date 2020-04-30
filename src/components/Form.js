@@ -40,7 +40,7 @@ class Form extends Component {
                 <form className="quiz-form">
                     <label className="game-start-input">
                         Enter the number of players:
-                        <select 
+                        <select
                             onChange={this.updateState} 
                             value={this.state.forms.playersNumber} 
                             name="playersNumber">
