@@ -12,47 +12,48 @@ describe('<GamePage />', () => {
     });
 
 
-    it('GamePage should load user data', () => {
-        return GamePage.getQuestions()
-        .then(data => {
-          expect(data).toBeDefined()
-          expect(data.entity.name).toEqual('Koen van Gilst')
-        })
-    });
+//     it('GamePage should load user data', () => {
+//         return GamePage.getQuestions()
+//         .then(data => {
+//           expect(data).toBeDefined()
+//           expect(data.entity.name).toEqual('Koen van Gilst')
+//         })
+//     });
 
-    it('GamePage should load user data', () => {
-          expect(Request).toEqual(ApiObject);
-    });
+// //     it('GamePage should load user data', () => {
+// //           expect(Request).toEqual(ApiObject);
+// //     });
 
     it('should have a start game button', () => {
         const wrapper = shallow(<GamePage  required={true}
         match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
-        expect(wrapper.exists('Button')).toEqual(true);
+        expect(wrapper.exists('.button')).toEqual(true);
     });
 
 
     it('should call the Api on button clicks', () => {
-        const wrapper = mount(<GamePage  required={true}
-        match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
+        const wrapper = mount(<BrowserRouter><GamePage  required={true}
+        match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/></BrowserRouter>); 
         expect(wrapper.find('Question').length).toEqual(0)    
-        wrapper.find('Button').simulate('click');
+        wrapper.find('.button').simulate('click');
         setTimeout(() => {
             expect(wrapper.find('Question').length).toEqual(10);
         }, 4000)      
     });
 
     it('should render a input tag', () => {
-        const wrapper = mount(<GamePage  required={true}
-        match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
-        expect(wrapper.find('input').length).toEqual(1)          
+        const wrapper = mount(<BrowserRouter><GamePage  required={true}
+            match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/></BrowserRouter>); 
+        expect(wrapper.find('.userInput').length).toEqual(1)          
     });
 
     it('should render change state onChange', () => {
-        const wrapper = shallow(<GamePage  required={true}  match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
-        wrapper.find('input').simulate('change', { target: { name: '1', value: '02' } })
+        const wrapper = mount(<BrowserRouter><GamePage  required={true}
+            match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/></BrowserRouter>); 
+        wrapper.find('.userInput').simulate('change', { target: { name: '1', value: '02' } })
         setTimeout(() => {
             expect((wrapper.state('userNames.1'))).toEqual('02');
         }, 4000)      
     });
 
-});
+ });
