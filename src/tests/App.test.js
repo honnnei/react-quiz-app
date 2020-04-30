@@ -23,35 +23,35 @@ describe('App', () => {
     expect((wrapper.find('Route').length)).toEqual(5);
   });
 
-  it('Route to HomePage is exact', () => {                                       
-    let route = wrapper.find("[path='/']");
-    expect(route).prop('exact').toBeTruthy();
+  
+   it('Route to HomePage is exact', () => {     
+    let wrap = mount(<App />);                                 
+    let route = wrap.find(<Route path='/' exact/>);
+    expect(route).toBeTruthy();
+   });
+   
+   it('Route to Question is exact', () => {   
+    let wrap = mount(<App />);                                       
+    let route = wrap.find( <Route path='/question/:qNumber' exact/>);
+    expect(route).toBeTruthy();
    });
 
-   it('Route to Question is exact', () => {                                       
-    let route = wrapper.find("[path='/question/:qNumber']");
-    expect(route).prop('exact').toBeTruthy();
+   it('Route to Next Question is exact', () => {   
+    let wrap = mount(<App />);                                       
+    let route = wrap.find( <Route path='/nextquestion/:previousQuestionNum' exact/>);
+    expect(route).toBeTruthy();
+   });
+   it('Route to ScorePage is exact', () => {   
+    let wrap = mount(<App />);                                       
+    let route = wrap.find( <Route path='/scores' exact/>);
+    expect(route).toBeTruthy();
    });
   
-   it('Route to NextQuestion is exact', () => {                                       
-    let route = wrapper.find("[path='/nextquestion/:previousQuestionNum]");
-    expect(route).prop('exact').toBeTruthy();
-   });
 
-   it('Route to ScorePage is exact', () => {                                       
-    let route = wrapper.find("[path='/scores']");
-    expect(route).prop('exact').toBeTruthy();
-   });
+  // it('redirects to GamePage', () => {
+  //   let wrapper = mount(<App/>)
+  //   expect(wrapper.find(Route).prop('location').render).toEqual("{(props) => <GamePage {...props} />}")
+  // })
 
-  it('includes Route to ScorePage', () => {                                       
-    let route = wrapper.find("[path='/scores']");
-    expect(route).prop('component').toEqual('ScorePage');
-    // expect(wrapper.find("[path='/scores']")).toBeTruthy();
-   });
-
-  it('redirects to GamePage', () => {
-    let wrapper = mount(<App/>)
-    expect(wrapper.find(Route).prop('location').render).toEqual("{(props) => <GamePage {...props} />}")
-  })
 
 });

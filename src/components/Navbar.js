@@ -9,8 +9,7 @@ import {
 } from 'reactstrap';
 
 const NavigationBar = (props) => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggle = () => setIsOpen(!isOpen);
+ 
 
   return (
     <div>
