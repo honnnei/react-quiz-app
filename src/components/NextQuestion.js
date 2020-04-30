@@ -40,7 +40,7 @@ const entities = new Entities();
                 <p>The correct answer was: {entities.decode(this.props.location.state.questionStateNext.questionsArray[this.props.match.params.previousQuestionNum].correct_answer)}</p>
                 <div className="user-feedback">{(Object.values(this.props.location.state.questionStateNext.userNames)).map(user => <h3>{this.userCorrect(user)}</h3>)}</div>
                 <div className="next-question-button-container">
-                    {questionNumber == 9 ? <Link to={{ pathname:"/scores", state:{userScores: currentQuestionScores, stateFinal: stateNext }}}><input className="next-question-button" type="button" value="View Scores!" /></Link> : <Link to={{pathname:`/question/${nextQNumberString}`, state: {qNumber: nextQuestionNumber, questionState: stateNext, previousQuestionScores: currentQuestionScores}}} ><input className="next-question-button" type="submit"  value="Next Question"/></Link>}
+                    {(questionNumber + 1) == this.props.location.state.questionStateNext.questionsArray.length ? <Link to={{ pathname:"/scores", state:{userScores: currentQuestionScores, stateFinal: stateNext }}}><input className="next-question-button" type="button" value="View Scores!" /></Link> : <Link to={{pathname:`/question/${nextQNumberString}`, state: {qNumber: nextQuestionNumber, questionState: stateNext, previousQuestionScores: currentQuestionScores}}} ><input className="next-question-button" type="submit"  value="Next Question"/></Link>}
                 </div>
             </div>
                
