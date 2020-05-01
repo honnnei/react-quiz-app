@@ -45,7 +45,7 @@ describe('Question', () => {
     });
 
     it('should render main Question div', () => {
-        expect(wrapper.exists('.question')).toEqual(true);
+        expect(wrapper.exists('.question-container')).toEqual(true);
     });
 
     it('should render the Answers Div div', () => {
@@ -53,7 +53,7 @@ describe('Question', () => {
     });
 
     it('should render the each answer div', () => {
-        expect(wrapper.exists('.radio-button')).toEqual(true);
+        expect(wrapper.exists('.radio-button-answer')).toEqual(true);
     });
 
 })
