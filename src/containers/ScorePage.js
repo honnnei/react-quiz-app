@@ -27,7 +27,7 @@ function ScorePage(props) {
         <div className="scorepage-container">
             <h1>Final Scores</h1>
             <div className="scores-container">
-             {winner ? <h2>The winner is: {winner}</h2> : <h2>There is no winners</h2>  }
+             {winner ? <h2>{winner} wins!!!</h2> : <h2>You lose!</h2>  }
                     {(Object.values(props.location.state.stateFinal.userNames)).map(user => {
                         return (<h3 key={user}>{user}:&#160;&#160;&#160;{props.location.state.userScores[user]}</h3>)
                     })}
