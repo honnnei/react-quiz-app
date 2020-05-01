@@ -64,6 +64,7 @@ class Question extends Component {
 
         return (
             <div className="question-container"  id={"category-"+this.state.questionInfo.category}>
+                <div className="question-inner-container">
                 <h4>Question {this.state.questionNumber + 1}</h4>
                 <h2>{entities.decode(this.state.questionInfo.questionsArray[this.state.questionNumber].question)}</h2>
                 <div className="radio-container">
@@ -100,7 +101,7 @@ class Question extends Component {
                             <button className="next-question-button" type="submit">Check Answer!</button>
                             </Link> 
                             </div>
-                
+                </div> 
             </div>
         );
     }

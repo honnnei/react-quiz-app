@@ -41,7 +41,7 @@ let justScores= [];
             <div className="scores-container">
              {winner.length === 1 ? <h2>The winner is: {winner}</h2> : winner.length > 1 ? <h2>The winners are: {winner.join(', ')}</h2> : <h2> Good Job!</h2>  }
                     {(Object.values(props.location.state.stateFinal.userNames)).map(user => {
-                        return (<h3>{user}:&#160;&#160;&#160;{props.location.state.userScores[user]}</h3>)
+                        return (<h3 key={user}>{user}:&#160;&#160;&#160;{props.location.state.userScores[user]}</h3>)
                     })}
 
                     
