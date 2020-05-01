@@ -55,7 +55,7 @@ describe('NextQuestion', () => {
                 path: "/nextquestion/:previousQuestionNum",
                 url: "/nextquestion/0"}} 
             location={{state: {queNumber: 1, questionStateNext: dumbieState, questionScores: dumbieScores, feedback: dumbieFeedback }}}/>);
-        expect(wrapper.exists('.nextquestion')).toEqual(true);
+        expect(wrapper.exists('.next-question-button-container')).toEqual(true);
     });
 
     it('should render the Next Question div', () => {
@@ -66,7 +66,7 @@ describe('NextQuestion', () => {
                 path: "/nextquestion/:previousQuestionNum",
                 url: "/nextquestion/0"}} 
             location={{state: {queNumber: 1, questionStateNext: dumbieState, questionScores: dumbieScores, feedback: dumbieFeedback }}}/>);
-        expect(wrapper.exists('.nextquestion')).toEqual(true);
+        expect(wrapper.exists('.next-question-container')).toEqual(true);
     });
 
 });
