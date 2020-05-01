@@ -1,3 +1,5 @@
+# Fatima, Richie, Rorie, Hanna
+
 # Installation:
 1. download the repo
 2. npm install
@@ -66,13 +68,15 @@
 - struggling to iterate through one Question component with different prop - hence we added the Next Question component which displays the correct answer :)
 
 # Struggles:
-- 
+
 
 # What we would do differently:
 - using buttons instead of radio buttons for choosing an answer for styling purposes
 - being more consistent with passing data (not mixing props and params etc)
 - cleaning up the state a bit (only saving a player's name once its entered etc not onChange) 
 - Past Scores Page - saving past data to a file or a database
+- distinguishing btw components and containers proved kind of pointless in this project
+- learn & use REDUX for avoiding the pains of passing state
 
 # RETRO
 
