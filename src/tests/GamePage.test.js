@@ -1,10 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
-import { shallow, mount } from 'enzyme'
-import GamePage from '../containers/GamePage'
+import { shallow, mount } from 'enzyme';
+import GamePage from '../containers/GamePage';
+import renderer from 'react-test-renderer';
 
 describe('<GamePage />', () => {
 
+    it('matches the snapshot', () => {
+        const tree = renderer.create(<BrowserRouter><GamePage  required={true}
+            match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/></BrowserRouter>).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+    
     it('should render GamePage div', () => {
         const wrapper = shallow(<GamePage  required={true}
         match={{params: {playersNumber: 1}, category: 'General Knowledge', difficulty:'medium'}}/>); 
