@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NextQuestion matches the snapshot 1`] = `
+<div
+  className="next-question-container"
+>
+  <h3>
+    In the video-game franchise Kingdom Hearts, the main protagonist, carries a weapon with what shape?
+  </h3>
+  <p>
+    The correct answer was: 
+    Key
+  </p>
+  <div
+    className="user-feedback"
+  >
+    <h3>
+      Rorie was correct ✓
+    </h3>
+  </div>
+  <div
+    className="next-question-button-container"
+  >
+    <a
+      href="/scores"
+      onClick={[Function]}
+    >
+      <input
+        className="next-question-button"
+        type="button"
+        value="View Scores!"
+      />
+    </a>
+  </div>
+</div>
+`;

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { shallow, mount } from 'enzyme'
-import NextQuestion from '../components/NextQuestion'
-
+import React from 'react';
+import { Link, BrowserRouter } from 'react-router-dom';
+import { shallow, mount } from 'enzyme';
+import NextQuestion from '../components/NextQuestion';
+import renderer from 'react-test-renderer';
 
 describe('NextQuestion', () => {
 
@@ -68,6 +68,18 @@ describe('NextQuestion', () => {
             location={{state: {queNumber: 1, questionStateNext: dumbieState, questionScores: dumbieScores, feedback: dumbieFeedback }}}/>);
         expect(wrapper.exists('.next-question-container')).toEqual(true);
     });
+
+    it('matches the snapshot', () => {
+        const tree = renderer.create(<BrowserRouter><NextQuestion 
+            match={{
+                isExact: true,
+                params: {previousQuestionNum: "0"},
+                path: "/nextquestion/:previousQuestionNum",
+                url: "/nextquestion/0"}} 
+            location={{state: {queNumber: 1, questionStateNext: dumbieState, questionScores: dumbieScores, feedback: dumbieFeedback }}}/></BrowserRouter>).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
+
 
 });
 
