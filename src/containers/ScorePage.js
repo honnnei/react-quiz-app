@@ -21,7 +21,7 @@ function ScorePage(props) {
                 maxScores= justScores.filter(function(item){
                     return item === max;
                 });
-        } else{console.log('no userscores found')} })
+        }})
     
         if(maxScores.length === 1 && scores.length > 1 ) {
             let sorted = scores.sort((a, b) =>{return b.score - a.score });
