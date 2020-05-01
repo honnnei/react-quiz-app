@@ -10,8 +10,9 @@ let justScores= [];
  let max;
  
     Object.values(props.location.state.stateFinal.userNames).map(user => {
-        if(props.location.state.userScores[user]){
-        scores.push( {
+
+        if(props.location.state.userScores[user] >= 0){
+        return( scores.push( {
             user: user,
             score: props.location.state.userScores[user]
         })
@@ -27,6 +28,7 @@ let justScores= [];
       if(maxScores.length === 1 && scores.length > 1 ) {
           let sorted = scores.sort((a, b) =>{return b.score - a.score });
        winner = sorted[0].user
+
       } else if(maxScores.length > 1 && scores.length >1) {
        let result = scores.filter(item => item.score === max)
           winner = result.map(x => x.user)  
@@ -39,7 +41,9 @@ let justScores= [];
         <div className="scorepage-container">
             <h1>Final Scores</h1>
             <div className="scores-container">
+
              {winner.length === 1 ? <h2>The winner is: {winner}</h2> : winner.length > 1 ? <h2>The winners are: {winner.join(', ')}</h2> : <h2> Good Job!</h2>  }
+
                     {(Object.values(props.location.state.stateFinal.userNames)).map(user => {
                         return (<h3 key={user}>{user}:&#160;&#160;&#160;{props.location.state.userScores[user]}</h3>)
                     })}

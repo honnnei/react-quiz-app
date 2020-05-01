@@ -4,6 +4,7 @@
     text-align: center;
     flex-direction: column;
     height: 100%;
+    background-color: #DCEDFC;
 }
 
 .scores-container {
