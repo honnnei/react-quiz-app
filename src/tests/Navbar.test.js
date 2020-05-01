@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import Navbar from '../components/Navbar';
 import { shallow, mount } from 'enzyme';
 import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
-import renderer from 'react-test-renderer'; //for snapshot testing
+import renderer from 'react-test-renderer';
 import NavigationBar from '../components/Navbar';
 
 describe('Navbar', () => {
@@ -12,10 +12,10 @@ describe('Navbar', () => {
       wrapper = shallow(<NavigationBar />);
     });
   
-    // it('matches the snapshot', () => {
-    // const tree = renderer.create(<Navbar />).toJSON();
-    //   expect(tree).toMatchSnapshot();
-    // });
+    it('matches the snapshot', () => {
+    const tree = renderer.create(<Navbar />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
   
     it('includes link to homepage', () => {                                       

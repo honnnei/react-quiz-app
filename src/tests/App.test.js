@@ -5,11 +5,17 @@ import Navbar from '../components/Navbar';
 import { Route } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
 import { MemoryRouter, Switch } from 'react-router-dom';
+import renderer from 'react-test-renderer';
 
 describe('App', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<App />);
+  });
+
+  it('matches the snapshot', () => {
+    const tree = renderer.create(<App />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   test('renders Navbar', () => {
