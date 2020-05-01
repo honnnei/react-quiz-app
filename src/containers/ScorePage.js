@@ -3,37 +3,48 @@ import '../css/ScorePage.css';
 
 
 function ScorePage(props) {
- let scores = [];
- let  winner;
-    Object.values(props.location.state.stateFinal.userNames).map(user => {
-        if(props.location.state.userScores[user] >= 0){
-        return( scores.push( {
-            user: user,
-            score: props.location.state.userScores[user]
-        }
-        ))} else{console.log('no userscores found')} })
+    let justScores= [];
+    let scores = [];
+    let maxScores;
+    let  winner;
+    let max;
  
-      if(scores.length >1 ) {
-          let sorted = scores.sort((a, b) =>{return b.score - a.score });
-       winner = sorted[0].user
-        console.log(winner)
-        console.log(scores);
-      } else {
-          console.log('not enough users')
-      }
+    Object.values(props.location.state.stateFinal.userNames).map(user => {
+
+        if(props.location.state.userScores[user] >= 0){ 
+                scores.push( {
+                    user: user,
+                    score: props.location.state.userScores[user]
+                })
+                justScores.push(props.location.state.userScores[user])
+                max = Math.max(...justScores)
+                maxScores= justScores.filter(function(item){
+                    return item === max;
+                });
+        }})
+    
+        if(maxScores.length === 1 && scores.length > 1 ) {
+            let sorted = scores.sort((a, b) =>{return b.score - a.score });
+            winner = [sorted[0].user]
+        } else if(maxScores.length > 1 && scores.length > 1) {
+            let result = scores.filter(item => item.score === max)
+            winner = result.map(x => x.user)  
+        } else{
+            winner = []
+        }
 
         
     return(
         <div className="scorepage-container">
             <h1>Final Scores</h1>
             <div className="scores-container">
-             {winner ? <h2>{winner} wins!!!</h2> : <h2>You lose!</h2>  }
+                {winner.length === 1 ? <h2>The winner is: {winner[0]}</h2> : winner.length > 1 ? <h2>The winners are: {winner.join(', ')}</h2> : <h2> Good Job!</h2>  }
+
                     {(Object.values(props.location.state.stateFinal.userNames)).map(user => {
                         return (<h3 key={user}>{user}:&#160;&#160;&#160;{props.location.state.userScores[user]}</h3>)
                     })}
 
-                    
-                </div>
+            </div>
         </div>
     );
 }
