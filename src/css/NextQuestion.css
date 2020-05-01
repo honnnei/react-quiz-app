@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 2em;
     font-size: 1.5em;
+    background-color: #DCEDFC;
 
 }
 
@@ -26,6 +27,6 @@
     /* width: 4em; */
     font-size: 0.5em;
     padding: 1em;
-    background-color: #004480;
+    background-color: #052848;
     color: white;
 }
