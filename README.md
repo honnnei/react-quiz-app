@@ -54,7 +54,7 @@
 
 # Tech
 - react
-- initially used reactstrap
+- initially used reactstrap (bootstrap) but changed to HTML/CSS to have more control over styling
 - initially considered using Redux but decided against it
 - packages installed and used:
     - enzyme
