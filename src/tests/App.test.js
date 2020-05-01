@@ -4,6 +4,7 @@ import App from '../App';
 import Navbar from '../components/Navbar';
 import { Route } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
+import { MemoryRouter, Switch } from 'react-router-dom';
 
 describe('App', () => {
   let wrapper;
@@ -47,12 +48,4 @@ describe('App', () => {
     let route = wrap.find( <Route path='/scores' exact/>);
     expect(route).toBeTruthy();
    });
-  
-
-  // it('redirects to GamePage', () => {
-  //   let wrapper = mount(<App/>)
-  //   expect(wrapper.find(Route).prop('location').render).toEqual("{(props) => <GamePage {...props} />}")
-  // })
-
-
 });
