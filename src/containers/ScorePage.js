@@ -6,7 +6,7 @@ function ScorePage(props) {
  let scores = [];
  let  winner;
     Object.values(props.location.state.stateFinal.userNames).map(user => {
-        if(props.location.state.userScores[user]){
+        if(props.location.state.userScores[user] >= 0){
         return( scores.push( {
             user: user,
             score: props.location.state.userScores[user]
@@ -17,6 +17,7 @@ function ScorePage(props) {
           let sorted = scores.sort((a, b) =>{return b.score - a.score });
        winner = sorted[0].user
         console.log(winner)
+        console.log(scores);
       } else {
           console.log('not enough users')
       }
