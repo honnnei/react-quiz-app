@@ -38,7 +38,7 @@ describe('Question', () => {
     });
 
     it('should change state onChange of input', () => {
-        wrapper.find('input').simulate('change', { target: { name: 'answer_0', value: 'Key' } })
+        (wrapper.find('input').at(1)).simulate('change', { target: { name: 'answer_0', value: 'Key' } })
         setTimeout(() => {
             expect((wrapper.state('userScores.Rorie'))).toEqual('1');
         }, 4000)      

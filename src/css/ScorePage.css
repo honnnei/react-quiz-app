@@ -1,0 +1,15 @@
+.scorepage-container {
+    margin: 3em;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.scores-container {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+}
