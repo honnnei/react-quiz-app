@@ -37,6 +37,13 @@ class GamePage extends React.Component {
         const name = e.target.value
         this.setState({ userNames: { ...this.state.userNames, [obj]: name}})
         this.setState({ userScores: { ...this.state.userScores, [name]: 0}})
+        for(let i =0;i<Object.keys(this.state.userNames).length;i++){
+            for(let j =0;j<Object.keys(this.state.userNames).length;j++){
+                if(i !== j && this.state.userNames[i] === this.state.userNames[j]){
+                    alert("Two users can not have the same name");
+                }
+            }
+        }
     }
 
 
