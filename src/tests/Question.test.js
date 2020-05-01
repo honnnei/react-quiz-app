@@ -38,17 +38,6 @@ describe('Question', () => {
             location={{state: dumbieState}}/>);
     });
 
-    it('matches the snapshot', () => {
-        const tree = renderer.create(<BrowserRouter><Question 
-            match={{
-                isExact: true,
-                params: {qNumber: "0"},
-                path: "/question/:qNumber",
-                url: "/question/0"}} 
-            location={{state: dumbieState}}/></BrowserRouter>).toJSON();
-        expect(tree).toMatchSnapshot();
-      });
-
     it('should change state onChange of input', () => {
         (wrapper.find('input').at(1)).simulate('change', { target: { name: 'answer_0', value: 'Key' } })
         setTimeout(() => {
