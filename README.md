@@ -56,6 +56,12 @@
 - react
 - initially used reactstrap
 - initially considered using Redux but decided against it
+- packages installed and used:
+    - enzyme
+    - enzyme-adapter-react-16
+    - html-entities
+    - react-router-dom
+    - react-test-renderer
 
 # What we've learnt:
 - functionality tests
@@ -63,11 +69,14 @@
 - working with params
 
 # Challenged we overcome:
-- passing state through the Link
+- passing state through the Link properties - props.location.state
 - giving mock props and params to components in tests
 - struggling to iterate through one Question component with different prop - hence we added the Next Question component which displays the correct answer :)
 
 # Struggles:
+- editing the style of radio buttons
+- mixing params, props and state in our use of data which makes things more confusing
+- creating a new player onChange and saving it into Scores Array
 
 
 # What we would do differently:
