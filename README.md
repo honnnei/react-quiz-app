@@ -63,6 +63,7 @@
 # Challenged we overcome:
 - passing state through the Link
 - giving mock props and params to components in tests
+- struggling to iterate through one Question component with different prop - hence we added the Next Question component which displays the correct answer :)
 
 # Struggles:
 - 
@@ -72,5 +73,7 @@
 - being more consistent with passing data (not mixing props and params etc)
 - cleaning up the state a bit (only saving a player's name once its entered etc not onChange) 
 - Past Scores Page - saving past data to a file or a database
+
+# RETRO
 
 

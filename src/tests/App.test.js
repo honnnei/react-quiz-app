@@ -41,6 +41,7 @@ describe('App', () => {
     let route = wrap.find( <Route path='/nextquestion/:previousQuestionNum' exact/>);
     expect(route).toBeTruthy();
    });
+   
    it('Route to ScorePage is exact', () => {   
     let wrap = mount(<App />);                                       
     let route = wrap.find( <Route path='/scores' exact/>);
