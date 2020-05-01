@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
-import { shallow, mount } from 'enzyme'
-import Question from '../components/Question'
+import { shallow, mount } from 'enzyme';
+import Question from '../components/Question';
+import renderer from 'react-test-renderer';
 
 
 describe('Question', () => {
@@ -38,14 +39,14 @@ describe('Question', () => {
     });
 
     it('should change state onChange of input', () => {
-        wrapper.find('input').simulate('change', { target: { name: 'answer_0', value: 'Key' } })
+        (wrapper.find('input').at(1)).simulate('change', { target: { name: 'answer_0', value: 'Key' } })
         setTimeout(() => {
             expect((wrapper.state('userScores.Rorie'))).toEqual('1');
         }, 4000)      
     });
 
     it('should render main Question div', () => {
-        expect(wrapper.exists('.question')).toEqual(true);
+        expect(wrapper.exists('.question-container')).toEqual(true);
     });
 
     it('should render the Answers Div div', () => {
@@ -53,7 +54,7 @@ describe('Question', () => {
     });
 
     it('should render the each answer div', () => {
-        expect(wrapper.exists('.radio-button')).toEqual(true);
+        expect(wrapper.exists('.radio-button-answer')).toEqual(true);
     });
 
 })

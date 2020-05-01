@@ -36,11 +36,11 @@ class Form extends Component {
   
     render() {
         return (
-            <div>
-                <form>
-                    <label>
-                        How many players:
-                        <select 
+            <div className="form-container">
+                <form className="quiz-form">
+                    <label className="game-start-input">
+                        Enter the number of players:
+                        <select
                             onChange={this.updateState} 
                             value={this.state.forms.playersNumber} 
                             name="playersNumber">
@@ -50,53 +50,53 @@ class Form extends Component {
                                 <option value="4">4</option>
                         </select>
                     </label>
-                    <label>
-                        Choose a category:
+                    <label className="game-start-input">
+                        Choose your quiz category:
                         <select 
                             onChange={this.updateState} 
                             value={this.state.category}
                             name="category"
                             >
-                                <option value="any">Any Category</option>
                                 <option value="9">General Knowledge</option>
+                                <option value="27">Animals</option>
+                                <option value="25">Art</option>
+                                <option value="26">Celebrities</option>
+                                <option value="16">Entertainment: Board Games</option>
                                 <option value="10">Entertainment: Books</option>
+                                <option value="32">Entertainment: Cartoon &amp; Animations</option>
+                                <option value="29">Entertainment: Comics</option>
                                 <option value="11">Entertainment: Film</option>
+                                <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
                                 <option value="12">Entertainment: Music</option>
                                 <option value="13">Entertainment: Musicals &amp; Theatres</option>
                                 <option value="14">Entertainment: Television</option>
                                 <option value="15">Entertainment: Video Games</option>
-                                <option value="16">Entertainment: Board Games</option>
-                                <option value="17">Science &amp; Nature</option>
-                                <option value="18">Science: Computers</option>
-                                <option value="19">Science: Mathematics</option>
-                                <option value="20">Mythology</option>
-                                <option value="21">Sports</option>
                                 <option value="22">Geography</option>
                                 <option value="23">History</option>
+                                <option value="20">Mythology</option>
                                 <option value="24">Politics</option>
-                                <option value="25">Art</option>
-                                <option value="26">Celebrities</option>
-                                <option value="27">Animals</option>
-                                <option value="28">Vehicles</option>
-                                <option value="29">Entertainment: Comics</option>
+                                <option value="18">Science: Computers</option>
                                 <option value="30">Science: Gadgets</option>
-                                <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
-                                <option value="32">Entertainment: Cartoon &amp; Animations</option>
+                                <option value="19">Science: Mathematics</option>
+                                <option value="17">Science &amp; Nature</option>
+                                <option value="21">Sports ⚽</option>
+                                <option value="28">Vehicles</option>              
+
                         </select>
                     </label>
-                    <label>
-                        How difficult:
+                    <label className="game-start-input">
+                        Choose the difficulty level:
                         <select 
                             onChange={this.updateState} 
                             value={this.state.difficulty}
                             name="difficulty">
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
+                                <option value="easy">Easy 🤑</option>
+                                <option value="medium">Medium 🤑</option>
+                                <option value="hard">Hard 🤑</option>
                         </select>
                     </label>
                     <Link to={`/gamepage/${this.state.forms.playersNumber}/${this.state.forms.difficulty}/${this.state.forms.category}`}>
-                    <button>Submit and Start the Game</button>
+                    <button className="start-game-button">Start Game</button>
                     </Link>
                     
                 </form>

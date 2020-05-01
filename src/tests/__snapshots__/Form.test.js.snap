@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Form /> matches the snapshot 1`] = `
+<div
+  className="form-container"
+>
+  <form
+    className="quiz-form"
+  >
+    <label
+      className="game-start-input"
+    >
+      Enter the number of players:
+      <select
+        name="playersNumber"
+        onChange={[Function]}
+        value={1}
+      >
+        <option
+          value="1"
+        >
+          1
+        </option>
+        <option
+          value="2"
+        >
+          2
+        </option>
+        <option
+          value="3"
+        >
+          3
+        </option>
+        <option
+          value="4"
+        >
+          4
+        </option>
+      </select>
+    </label>
+    <label
+      className="game-start-input"
+    >
+      Choose your quiz category:
+      <select
+        name="category"
+        onChange={[Function]}
+      >
+        <option
+          value="9"
+        >
+          General Knowledge
+        </option>
+        <option
+          value="27"
+        >
+          Animals
+        </option>
+        <option
+          value="25"
+        >
+          Art
+        </option>
+        <option
+          value="26"
+        >
+          Celebrities
+        </option>
+        <option
+          value="16"
+        >
+          Entertainment: Board Games
+        </option>
+        <option
+          value="10"
+        >
+          Entertainment: Books
+        </option>
+        <option
+          value="32"
+        >
+          Entertainment: Cartoon & Animations
+        </option>
+        <option
+          value="29"
+        >
+          Entertainment: Comics
+        </option>
+        <option
+          value="11"
+        >
+          Entertainment: Film
+        </option>
+        <option
+          value="31"
+        >
+          Entertainment: Japanese Anime & Manga
+        </option>
+        <option
+          value="12"
+        >
+          Entertainment: Music
+        </option>
+        <option
+          value="13"
+        >
+          Entertainment: Musicals & Theatres
+        </option>
+        <option
+          value="14"
+        >
+          Entertainment: Television
+        </option>
+        <option
+          value="15"
+        >
+          Entertainment: Video Games
+        </option>
+        <option
+          value="22"
+        >
+          Geography
+        </option>
+        <option
+          value="23"
+        >
+          History
+        </option>
+        <option
+          value="20"
+        >
+          Mythology
+        </option>
+        <option
+          value="24"
+        >
+          Politics
+        </option>
+        <option
+          value="18"
+        >
+          Science: Computers
+        </option>
+        <option
+          value="30"
+        >
+          Science: Gadgets
+        </option>
+        <option
+          value="19"
+        >
+          Science: Mathematics
+        </option>
+        <option
+          value="17"
+        >
+          Science & Nature
+        </option>
+        <option
+          value="21"
+        >
+          Sports ⚽
+        </option>
+        <option
+          value="28"
+        >
+          Vehicles
+        </option>
+      </select>
+    </label>
+    <label
+      className="game-start-input"
+    >
+      Choose the difficulty level:
+      <select
+        name="difficulty"
+        onChange={[Function]}
+      >
+        <option
+          value="easy"
+        >
+          Easy 🤑
+        </option>
+        <option
+          value="medium"
+        >
+          Medium 🤑
+        </option>
+        <option
+          value="hard"
+        >
+          Hard 🤑
+        </option>
+      </select>
+    </label>
+    <a
+      href="/gamepage/1/easy/9"
+      onClick={[Function]}
+    >
+      <button
+        className="start-game-button"
+      >
+        Start Game
+      </button>
+    </a>
+  </form>
+</div>
+`;

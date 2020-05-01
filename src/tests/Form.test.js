@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
-import { shallow, mount } from 'enzyme'
-import Form from '../components/Form'
+import { shallow, mount } from 'enzyme';
+import Form from '../components/Form';
+import renderer from 'react-test-renderer';
 
 describe('<Form />', () => {
+
+    it('matches the snapshot', () => {
+        const tree = renderer.create(<BrowserRouter><Form /></BrowserRouter>).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 
     it('should render a form', () => {
         const wrapper = shallow(<Form />); 

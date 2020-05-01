@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar matches the snapshot 1`] = `
+<div
+  className="navbar-container"
+>
+  <nav>
+    <a
+      className="nav-link"
+      href="/"
+    >
+       FaRRoaH Quiz
+    </a>
+    <a
+      className="nav-link"
+      href="/"
+    >
+      New Game
+    </a>
+  </nav>
+</div>
+`;

@@ -1,0 +1,33 @@
+.next-question-container{
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    font-size: 1.5em;
+    background-color: #DCEDFC;
+
+}
+
+.user-feedback {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+
+.next-question-button-container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.next-question-button {
+    border-radius: 1em;
+    border: 0;
+    /* width: 4em; */
+    font-size: 0.5em;
+    padding: 1em;
+    background-color: #052848;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}

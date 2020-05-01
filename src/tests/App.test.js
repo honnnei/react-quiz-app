@@ -4,11 +4,18 @@ import App from '../App';
 import Navbar from '../components/Navbar';
 import { Route } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
+import { MemoryRouter, Switch } from 'react-router-dom';
+import renderer from 'react-test-renderer';
 
 describe('App', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<App />);
+  });
+
+  it('matches the snapshot', () => {
+    const tree = renderer.create(<App />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   test('renders Navbar', () => {
@@ -41,17 +48,10 @@ describe('App', () => {
     let route = wrap.find( <Route path='/nextquestion/:previousQuestionNum' exact/>);
     expect(route).toBeTruthy();
    });
+   
    it('Route to ScorePage is exact', () => {   
     let wrap = mount(<App />);                                       
     let route = wrap.find( <Route path='/scores' exact/>);
     expect(route).toBeTruthy();
    });
-  
-
-  // it('redirects to GamePage', () => {
-  //   let wrapper = mount(<App/>)
-  //   expect(wrapper.find(Route).prop('location').render).toEqual("{(props) => <GamePage {...props} />}")
-  // })
-
-
 });

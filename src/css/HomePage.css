@@ -1,0 +1,50 @@
+.home-page-container{
+    background-color: #DCEDFC;
+    height: 100%;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+
+.quiz-form {
+    padding: 2em;
+    height: 30em;
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+select {
+    margin: 1em 0;
+    border-radius: 1em;
+    padding: 1em;
+    text-align: justify;
+    text-justify: center;
+    
+}
+
+.game-start-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    letter-spacing: 0.05em;
+    font-size: 1em;
+}
+
+
+.start-game-button{
+    border-radius: 1em;
+    border: 0;
+    padding: 1em;
+    background-color: #052848;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}

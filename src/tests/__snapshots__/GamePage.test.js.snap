@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GamePage /> matches the snapshot 1`] = `
+<div
+  className="game-page-container"
+>
+  <form
+    className="name-form"
+  >
+    <div
+      className="name-form-title"
+    >
+      <label>
+        Enter player name
+        
+      </label>
+    </div>
+    <div
+      className="name-input"
+    >
+      <label>
+        Player 1:
+        <input
+          className="name-input-box"
+          name="0"
+          onChange={[Function]}
+          placeholder="Name"
+          required={true}
+          type="text"
+        />
+      </label>
+    </div>
+    
+  </form>
+</div>
+`;
