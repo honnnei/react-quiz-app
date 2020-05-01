@@ -8,15 +8,13 @@
     height: 100%;
 }
 html, body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Jost', sans-serif;
     height: 100vh;
-
 }
 a {
     text-decoration: none;
     color: white;
-    font-size: 2em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5em;
     padding: 1em;
     border-radius: 0.5em;
 }
@@ -34,6 +32,7 @@ nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .nav-link:hover{
