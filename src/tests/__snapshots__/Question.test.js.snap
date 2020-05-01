@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question matches the snapshot 1`] = `
+<div
+  className="question-container"
+  id="category-9"
+>
+  <div
+    className="question-inner-container"
+  >
+    <h4>
+      Question 
+      1
+    </h4>
+    <h2>
+      In the video-game franchise Kingdom Hearts, the main protagonist, carries a weapon with what shape?
+    </h2>
+    <div
+      className="radio-container"
+    >
+      <div
+        className="answer-list"
+      >
+        <h3
+          className="player-name"
+        >
+          Rorie
+        </h3>
+        <form>
+          <div
+            className="single-answer"
+          >
+            <input
+              className="radio-button-answer"
+              id="Rorie"
+              name="answer_0"
+              onChange={[Function]}
+              type="radio"
+              value="Pen"
+            />
+            <label
+              for="Pen"
+            >
+               
+              Pen
+               
+            </label>
+          </div>
+          <div
+            className="single-answer"
+          >
+            <input
+              className="radio-button-answer"
+              id="Rorie"
+              name="answer_0"
+              onChange={[Function]}
+              type="radio"
+              value="Cellphone"
+            />
+            <label
+              for="Cellphone"
+            >
+               
+              Cellphone
+               
+            </label>
+          </div>
+          <div
+            className="single-answer"
+          >
+            <input
+              className="radio-button-answer"
+              id="Rorie"
+              name="answer_0"
+              onChange={[Function]}
+              type="radio"
+              value="Key"
+            />
+            <label
+              for="Key"
+            >
+               
+              Key
+               
+            </label>
+          </div>
+          <div
+            className="single-answer"
+          >
+            <input
+              className="radio-button-answer"
+              id="Rorie"
+              name="answer_0"
+              onChange={[Function]}
+              type="radio"
+              value="Sword"
+            />
+            <label
+              for="Sword"
+            >
+               
+              Sword
+               
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      className="next-question-button-container"
+    >
+      <a
+        href="/nextquestion/0"
+        onClick={[Function]}
+      >
+        <button
+          className="next-question-button"
+          type="submit"
+        >
+          Check Answer!
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+`;

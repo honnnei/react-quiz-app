@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
-import { shallow, mount } from 'enzyme'
-import Question from '../components/Question'
+import { shallow, mount } from 'enzyme';
+import Question from '../components/Question';
+import renderer from 'react-test-renderer';
 
 
 describe('Question', () => {
@@ -36,6 +37,17 @@ describe('Question', () => {
                 url: "/question/0"}} 
             location={{state: dumbieState}}/>);
     });
+
+    it('matches the snapshot', () => {
+        const tree = renderer.create(<BrowserRouter><Question 
+            match={{
+                isExact: true,
+                params: {qNumber: "0"},
+                path: "/question/:qNumber",
+                url: "/question/0"}} 
+            location={{state: dumbieState}}/></BrowserRouter>).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
 
     it('should change state onChange of input', () => {
         (wrapper.find('input').at(1)).simulate('change', { target: { name: 'answer_0', value: 'Key' } })
