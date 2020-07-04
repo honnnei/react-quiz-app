@@ -29,7 +29,6 @@ describe('<Form />', () => {
         const wrapper = mount(<BrowserRouter><Form /></BrowserRouter>); 
         wrapper.find('select').at(0).simulate('change', { target: { name: 'playersNumber', value: 3 } });
         expect(wrapper.find('select').at(0).prop('value')).toEqual(3);
-
     })
 
 });
